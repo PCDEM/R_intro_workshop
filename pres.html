@@ -1,0 +1,2288 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="pres_files/libs/clipboard/clipboard.min.js"></script>
+<script src="pres_files/libs/quarto-html/tabby.min.js"></script>
+<script src="pres_files/libs/quarto-html/popper.min.js"></script>
+<script src="pres_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="pres_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="pres_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="pres_files/libs/quarto-html/quarto-syntax-highlighting-0815c480559380816a4d1ea211a47e91.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="pres_files/libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
+<link href="pres_files/libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.7.29">
+
+  <meta name="author" content="Alex Manos, M.S.">
+  <meta name="dcterms.date" content="2025-07-10">
+  <title>R for Beginners</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="pres_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="pres_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="pres_files/libs/revealjs/dist/theme/quarto-bc212c1eb21e0fcf90777bde86885d66.css">
+  <link href="pres_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="pres_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="pres_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="pres_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+  <link href="pres_files/libs/countdown-0.4.0/countdown.css" rel="stylesheet">
+
+  <script src="pres_files/libs/countdown-0.4.0/countdown.js"></script>
+
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">R for Beginners</h1>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Alex Manos, M.S. 
+</div>
+        <p class="quarto-title-affiliation">
+            Pinellas County Division of Environmental Management
+          </p>
+    </div>
+</div>
+
+  <p class="date">July 10, 2025</p>
+</section>
+<section id="disclaimer" class="slide level2" data-background-color="#fa6666">
+<h2>DISCLAIMER</h2>
+<p>I am <strong>not</strong> a computer scientist, I’m just a guy that likes data</p>
+<!-- <img src="www/me.png" style=" -->
+<!--   width:250; -->
+<!--   height:375px; -->
+<!--   border-radius: 12px; -->
+<!--   position: absolute; -->
+<!--   top: 200px; -->
+<!--   left: 800px; -->
+<!-- "> -->
+</section>
+<section id="outline" class="slide level2">
+<h2>Outline</h2>
+<ul>
+<li>Introductions</li>
+<li>R vs.&nbsp;RStudio</li>
+<li>Use Cases</li>
+<li>RStudio Interface</li>
+<li>R basics</li>
+<li>Coding practice</li>
+</ul>
+</section>
+<section id="section" class="slide level2" data-background-color="#006791">
+<h2></h2>
+<div style="font-size: 3em; text-align: center; margin-top: 30vh; font-weight:bold;">
+<p>Background</p>
+</div>
+</section>
+<section id="what-is-r" class="slide level2">
+<h2>What is R?</h2>
+<div class="fragment fade-in">
+<p>Wikipedia says:</p>
+<p>“<em>R is a programming language for statistical computing and data visualization.</em>”</p>
+<p><img data-src="www/R_logo.png" class="absolute" style="top: 200px; left: 900px; width: 215px; height: 185px; "></p>
+</div>
+<ul>
+<li class="fragment">Data wrangling/tidying</li>
+<li class="fragment">Statistical analysis</li>
+<li class="fragment">Data visualization</li>
+<li class="fragment">Automation</li>
+</ul>
+<div class="fragment fade-in">
+<p><img data-src="www/Python_logo.png" class="absolute" style="top: 270px; left: 515px; width: 205px; height: 250px; "></p>
+</div>
+</section>
+<section id="why-use-r" class="slide level2">
+<h2>Why use R?</h2>
+<ul>
+<li><p>R is one of the most popular programming languages in environmental science.</p></li>
+<li><p>Open-source (free!) with a community of users and developers around the world and throughout numerous sectors.</p></li>
+<li><p>Provides powerful tools for data analysis, visualization, and reporting.</p></li>
+</ul>
+<div class="fragment fade-in" data-fragment-index="1">
+<p><img data-src="www/tiobe.png" class="absolute" style="top: 280px; left: 0px; width: 590px; height: 415px; "></p>
+</div>
+<div class="fragment fade-in" data-fragment-index="2">
+<p><img data-src="www/google.png" class="absolute" style="top: 290px; left: 600px; width: 200px; height: 70px; "> <img data-src="www/meta.png" class="absolute" style="top: 630px; left: 600px; width: 190px; height: 45px; "> <img data-src="www/amazon.png" class="absolute" style="top: 400px; left: 975px; width: 170px; height: 60px; "> <img data-src="www/pfizer.png" class="absolute" style="top: 280px; left: 1050px; width: 150px; height: 75px; "> <img data-src="www/ibm.png" class="absolute" style="top: 400px; left: 600px; width: 140px; height: 75px; "> <img data-src="www/microsoft.png" class="absolute" style="top: 165px; left: 1000px; width: 200px; height: 125px; "> <img data-src="www/ford.png" class="absolute" style="top: 620px; left: 850px; width: 160px; height: 75px; "> <img data-src="www/nyt.png" class="absolute" style="top: 535px; left: 600px; width: 380px; height: 60px; "> <img data-src="www/usgs.png" class="absolute" style="top: 290px; left: 815px; width: 190px; height: 70px; "> <img data-src="www/noaa.png" class="absolute" style="top: 370px; left: 780px; width: 140px; height: 140px; "> <img data-src="www/nih.png" class="absolute" style="top: 485px; left: 1020px; width: 140px; height: 115px; "></p>
+</div>
+</section>
+<section id="what-is-rstudio" class="slide level2">
+<h2>What is RStudio?</h2>
+<ul>
+<li><p>RStudio is the IDE (Integrated Development Environment) for R.</p></li>
+<li><p>Used for writing, running, and debugging R code.</p></li>
+<li><p>Increases productivity and efficiency.</p></li>
+</ul>
+<p><img data-src="www/RStudio_logo.png" class="absolute" style="top: 340px; left: 130px; width: 700px; height: 250px; "></p>
+</section>
+<section id="r-vs.-rstudio" class="slide level2">
+<h2>R vs.&nbsp;RStudio</h2>
+<ul>
+<li><p>R is the programming language</p></li>
+<li><p>RStudio is the user interface for R (IDE)</p></li>
+</ul>
+<div class="fragment fade-in">
+<p>R is the engine</p>
+<p>RStudio is the informational display</p>
+<p><img data-src="www/engine.png" class="absolute" style="top: 230px; left: 550px; width: 400px; height: 400px; "></p>
+</div>
+</section>
+<section id="cran" class="slide level2">
+<h2>CRAN</h2>
+<ul>
+<li>CRAN (Comprehensive R Archive Network) is the official repository for the R language and R packages</li>
+<li>CRAN is a network of servers that store R packages and documentation</li>
+<li>Maintained by POSIT</li>
+<li>When you install a package, it is downloaded from CRAN</li>
+<li>As of 05/09/2025, there are 22,392 packages on CRAN!</li>
+</ul>
+<p><img data-src="www/cran.png" class="absolute" style="top: 320px; left: 800px; width: 250px; height: 250px; "></p>
+</section>
+<section id="r-and-r-package-security" class="slide level2">
+<h2>R and R Package Security</h2>
+<ul>
+<li>R and RStudio are safe and maintained by POSIT.</li>
+<li>POSIT runs unit tests on CRAN packages before they are released for security.</li>
+<li>Be careful about downloading packages from GitHub or other sources unless you review all of the code or is coming from a verified and trusted source.</li>
+<li>Sources like Stack Overflow and other coding websites are great for snippets</li>
+</ul>
+</section>
+<section id="section-1" class="slide level2" data-background-color="#006791">
+<h2></h2>
+<div style="font-size: 3em; text-align: center; margin-top: 30vh; font-weight:bold;">
+<p>Use Cases</p>
+</div>
+</section>
+<section id="use-case---water-quality-monitoring" class="slide level2">
+<h2>Use Case - Water Quality Monitoring</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<ul>
+<li><p>Sampling divided into:</p>
+<ul>
+<li>Streams</li>
+<li>Lakes/Coastal</li>
+</ul></li>
+</ul>
+<ul>
+<li>Nutrients, chlorophyll, Turbidity, bacteria, Dissolved Oxygen, etc.</li>
+</ul>
+<ul>
+<li>Sampling divided into “runs” with tidally influenced streams</li>
+</ul>
+</div><div class="column" style="width:60%;">
+<p><img data-src="www/lr_sites.png" class="absolute" style="top: 80px; left: 450px; width: 300px; height: 550px; "> <img data-src="www/strata.png" class="absolute" style="top: 80px; left: 750px; width: 375px; height: 540px; "></p>
+</div></div>
+</section>
+<section id="stream-sampling-dates" class="slide level2">
+<h2>Stream Sampling Dates</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li>No previous automation</li>
+</ul>
+<ul>
+<li>Tide charts inspected for each site for optimal sampling dates</li>
+</ul>
+<ul>
+<li><code>rtide</code> package used to automatically pull tidal height</li>
+</ul>
+<ul>
+<li>Algorithm developed to select optimal sampling dates based on time of outgoing tide</li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p><img data-src="www/rtide.png"></p>
+</div></div>
+</section>
+<section id="randomized-strata-sampling-old" class="slide level2">
+<h2>Randomized Strata Sampling – Old</h2>
+<ul>
+<li><p>SAS code 20+ years old and divided into multiple files</p></li>
+<li><p>Only 1 license available within our group</p></li>
+<li><p>Limited staff knowledge of SAS</p></li>
+</ul>
+<p><img data-src="www/strata_old.png" class="absolute" style="top: 440px; left: 0px; width: 1000px; height: 150px; "></p>
+<p><img data-src="www/gpt.png" class="absolute fragment" style="top: 250px; left: 500px; width: 530px; height: 150px; "></p>
+</section>
+<section id="randomized-strata-sampling-new" class="slide level2">
+<h2>Randomized Strata Sampling – New</h2>
+<ul>
+<li><p>Old SAS code converted to R</p></li>
+<li><p>Code available to all staff to view, edit, run</p></li>
+<li><p>In-house expertise allows for customization</p></li>
+<li><p>Combined with stream date code to generate yearly sampling schedule for streamlined process</p></li>
+</ul>
+<p><img data-src="www/strata_new.png" class="absolute" style="top: 380px; left: 20px; width: 850px; height: 200px; "></p>
+</section>
+<section id="sample-bottle-kits" class="slide level2">
+<h2>Sample Bottle Kits</h2>
+<p><img data-src="www/request.png" class="absolute" style="top: 80px; left: 0px; width: 500px; height: 550px; "> <img data-src="www/coc.png" class="absolute" style="top: 75px; left: 500px; width: 600px; height: 550px; "></p>
+<p><img data-src="www/com.png" class="absolute fragment" style="top: 120px; left: 200px; width: 500px; height: 240px; "></p>
+</section>
+<section id="data-qaqc-semi-automation" class="slide level2">
+<h2>Data QA/QC Semi-Automation</h2>
+<p><img data-src="www/qaqc.png" class="absolute" style="top: 80px; left: 200px; width: 750px; height: 500px; "> <img data-src="www/qcleft.png" class="absolute fragment" style="top: 200px; left: 50px; width: 130px; height: 180px; "> <img data-src="www/qcright.png" class="absolute fragment" style="top: 320px; left: 960px; width: 110px; height: 120px; "></p>
+</section>
+<section id="data-qaqc-semi-automation-1" class="slide level2">
+<h2>Data QA/QC Semi-Automation</h2>
+<div class="columns">
+<div class="column" style="width:70%;">
+<div class="fragment semi-fade-out" data-fragment-index="1">
+<ul>
+<li>Previous automation processes were limited to HACH systems, all other QA/QC checks were done manually (Time/date, missing data)</li>
+</ul>
+</div>
+<div class="fragment fade-in" data-fragment-index="1">
+<ul>
+<li><p>Current process performs all checks automatically and generates PDF report detailing each check conducted</p>
+<ul>
+<li>Reproducible QA/QC</li>
+<li>Provides digital paper trail</li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment fade-in" data-fragment-index="3">
+<ul>
+<li>Processing time before automation: <code>5-8 weeks</code></li>
+</ul>
+</div>
+<div class="fragment fade-in" data-fragment-index="4">
+<ul>
+<li>Processing time after automation: <code>2-4 weeks</code></li>
+</ul>
+</div>
+</div><div class="column" style="width:30%;">
+<p><img data-src="www/qaqc.png"> <img data-src="www/quarto.png" class="fragment fade-in" data-fragment-index="2"></p>
+</div></div>
+</section>
+<section id="dashboards" class="slide level2">
+<h2>Dashboards</h2>
+<p><a href="https://pcdem.shinyapps.io/dashboard/">https://pcdem.shinyapps.io/dashboard/</a></p>
+<p><img data-src="www/dashboard.png" class="absolute" style="top: 140px; left: 0px; width: 1000px; height: 500px; "> <img data-src="www/shiny.png" class="absolute" style="top: 140px; left: 1000px; width: 140px; height: 155px; "> <img data-src="www/rmd.png" class="absolute" style="top: 295px; left: 1000px; width: 140px; height: 155px; "></p>
+</section>
+<section id="presentations" class="slide level2">
+<h2>Presentations</h2>
+<ul>
+<li><p>This entire presentation was created using R and RStudio!</p></li>
+<li><p>The code used to create this presentation is available on GitHub</p></li>
+<li><p>The presentation is in <code>Quarto</code> format, which allows for easy conversion to HTML, PDF, and Word formats</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="sc">---</span></span>
+<span id="cb1-2"><a href=""></a>title<span class="sc">:</span> <span class="st">"R for Beginners"</span></span>
+<span id="cb1-3"><a href=""></a>author<span class="sc">:</span> </span>
+<span id="cb1-4"><a href=""></a>  <span class="sc">-</span> name<span class="sc">:</span> <span class="st">"Alex Manos, M.S."</span></span>
+<span id="cb1-5"><a href=""></a>    affiliation<span class="sc">:</span> <span class="st">"Pinellas County Division of Environmental Management"</span> </span>
+<span id="cb1-6"><a href=""></a>date<span class="sc">:</span> <span class="st">"2025-07-10"</span></span>
+<span id="cb1-7"><a href=""></a>format<span class="sc">:</span> </span>
+<span id="cb1-8"><a href=""></a>  revealjs<span class="sc">:</span></span>
+<span id="cb1-9"><a href=""></a>    controls<span class="sc">:</span> false</span>
+<span id="cb1-10"><a href=""></a>    date<span class="sc">-</span>format<span class="sc">:</span> <span class="st">"MMMM D, YYYY"</span></span>
+<span id="cb1-11"><a href=""></a>    theme<span class="sc">:</span> [<span class="st">"styles.scss"</span>]</span>
+<span id="cb1-12"><a href=""></a>    logo<span class="sc">:</span> www<span class="sc">/</span>pinellas_logo.png</span>
+<span id="cb1-13"><a href=""></a><span class="sc">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="ai-and-coding" class="slide level2">
+<h2>AI and Coding</h2>
+<ul>
+<li><p>AI is a powerful tool for generating code, but it is not perfect</p></li>
+<li><p>You can use it to help learn code but you should try to figure it out yourself first</p></li>
+</ul>
+<div class="fragment fade-in">
+<ul>
+<li>Don’t vibe-code!
+<ul>
+<li>You can get code that works and generates results but are wrong</li>
+<li>You need to understand the code and know how to problem-solve</li>
+</ul></li>
+</ul>
+<p><img data-src="www/vibe2.png" class="absolute" style="top: 160px; left: 890px; width: 330px; height: 330px; "></p>
+</div>
+<p><img data-src="www/gpt.png" class="absolute" style="top: 400px; left: 0px; width: 530px; height: 150px; "> <img data-src="www/copilot.png" class="absolute" style="top: 400px; left: 650px; width: 350px; height: 250px; "></p>
+</section>
+<section id="section-2" class="slide level2" data-background-color="#006791">
+<h2></h2>
+<div style="font-size: 3em; text-align: center; margin-top: 30vh; font-weight:bold;">
+<p>Installing R &amp; RStudio</p>
+</div>
+</section>
+<section id="installing-r" class="slide level2">
+<h2>Installing R</h2>
+<ul>
+<li><p>R can be downloaded for free from <a href="https://posit.co/download/rstudio-desktop/">posit</a> (maintainer of R/RStudio software)</p></li>
+<li><p>Click “Download and Install R” which will take you to the R CRAN page</p></li>
+<li><p>Click “Download R for (your OS)”</p>
+<ul>
+<li><strong>Windows</strong>: Click “base” and then “Download R x.x.x for Windows”</li>
+<li><strong>macOS</strong>: Select the correct <code>.pkg</code> file based on your chip specs</li>
+</ul></li>
+<li><p>Follow the installation instructions</p></li>
+</ul>
+<p><img data-src="www/posit.png" class="absolute" style="top: 400px; left: 0px; width: 720px; height: 290px; "> <img data-src="www/box.png" class="absolute" style="top: 415px; left: 0px; width: 350px; height: 290px; "></p>
+</section>
+<section id="installing-rstudio" class="slide level2">
+<h2>Installing RStudio</h2>
+<ul>
+<li><p>RStudio is downloaded on the same <a href="https://posit.co/download/rstudio-desktop/">posit</a> page where R was downloaded from</p></li>
+<li><p>Click “Download RStudio Desktop For (your OS)”</p></li>
+<li><p>Open the RStudio <code>.exe</code> file and follow the instructions</p></li>
+<li><p>You can open RStudio by clicking the icon or searching your applications</p></li>
+</ul>
+<p><img data-src="www/posit.png" class="absolute" style="top: 400px; left: 0px; width: 720px; height: 290px; "> <img data-src="www/box.png" class="absolute" style="top: 435px; left: 365px; width: 360px; height: 170px; "></p>
+</section>
+<section id="changing-r-version" class="slide level2">
+<h2>Changing R Version</h2>
+<p>RStudio allows you to change the version of R you are using</p>
+<p><img data-src="www/r_version.gif" class="absolute" style="top: 160px; left: 110px; width: 800px; height: 530px; "></p>
+</section>
+<section id="section-3" class="slide level2" data-background-color="#006791">
+<h2></h2>
+<div style="font-size: 3em; text-align: center; margin-top: 30vh; font-weight:bold;">
+<p>R Coding Basics</p>
+</div>
+</section>
+<section id="common-terms" class="slide level2">
+<h2>Common Terms</h2>
+<p><span style="color:#006791"><strong>R-specific</strong></span></p>
+<ul>
+<li><strong>Object</strong>: A variable, data frame, or other data structure</li>
+<li><strong>Script</strong>: A file containing R code</li>
+<li><strong>Function</strong>: A block of code that performs a specific task (<code>function()</code>)</li>
+<li><strong>Argument</strong>: A value passed to a function</li>
+<li><strong>Package</strong>: A collection of functions and data sets</li>
+</ul>
+<p><span style="color:#006791"><strong>RStudio-specific</strong></span></p>
+<ul>
+<li><strong>Panel</strong>: A section of the RStudio interface</li>
+<li><strong>Project</strong>: A collection of files and settings for a specific task</li>
+<li><strong>Environment</strong>: A list of objects currently in memory</li>
+</ul>
+</section>
+<section id="navigating-rstudio" class="slide level2">
+<h2>Navigating RStudio</h2>
+<p><img data-src="www/rstudio_home.png" class="absolute" style="top: 70px; left: 0px; width: 1000px; height: 600px; "></p>
+<div class="fragment fade-in" data-fragment-index="1" style="color:red; position:absolute; top:220px; left:90px;">
+<p>Code <em>can</em> be <br> written here</p>
+</div>
+<div class="fragment fade-in" data-fragment-index="2" style="color:red; position:absolute; top:250px; right:200px;">
+<p>Imported data and <br> variables are here</p>
+</div>
+<div class="fragment fade-in" data-fragment-index="3" style="color:red; position:absolute; top:510px; right:160px;">
+<p>Files, plots, and <br> packages are here</p>
+</div>
+<div class="fragment fade-in" data-fragment-index="4" style="color:red; position:absolute; top:510px; right:540px;">
+<p>Output from code <br> displayed here</p>
+</div>
+</section>
+<section id="setting-your-working-directory" class="slide level2">
+<h2>Setting Your Working Directory</h2>
+<ul>
+<li>Your working directory is where all your files live</li>
+<li>R does not know where your files are unless you tell it</li>
+<li>If you want to use any data that does not come with a package, you need to tell R where it lives</li>
+</ul>
+<div class="fragment fade-in" data-fragment-index="1">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a><span class="co"># The working directory where R will look for files </span></span>
+<span id="cb2-2"><a href=""></a><span class="fu">getwd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "C:/Users/bcc105701/OneDrive - Pinellas County/Desktop/workshops/R_intro_workshop"</code></pre>
+</div>
+</div>
+</div>
+<p><br></p>
+<div class="fragment fade-in" data-fragment-index="2">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a><span class="co"># Set the working directory to the folder where your files are</span></span>
+<span id="cb4-2"><a href=""></a><span class="fu">setwd</span>(<span class="st">"C:/Users/YourName/Documents/YourProject"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="installing-packages" class="slide level2">
+<h2>Installing Packages</h2>
+<ul>
+<li><p>Packages can be installed through 2 methods: console/script or RStudio interface</p></li>
+<li><p><em>Console/Script</em>: <code>install.packages("package_name")</code></p>
+<ul>
+<li>If you want to install multiple packages at once you can do <code>install.packages(c("package1", "package2"))</code></li>
+</ul></li>
+<li><p><em>RStudio</em>: Click the “Packages” tab in the bottom-right window pane.Then click “Install” and search for the package you want to install.</p></li>
+</ul>
+<p><img data-src="www/packages.png" class="absolute" style="top: 410px; left: 0px; width: 500px; height: 300px; "></p>
+</section>
+<section id="loading-packages" class="slide level2">
+<h2>Loading Packages</h2>
+<p>Once the packages are installed we need to load them into our <code>R</code> session with the <code>library()</code> function</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="co"># Use the '#' symbol to talk to ourselves by 'commenting out' lines.</span></span>
+<span id="cb5-2"><a href=""></a><span class="co"># R will not run any line with a '#' in front of it.</span></span>
+<span id="cb5-3"><a href=""></a><span class="fu">library</span>(package1)</span>
+<span id="cb5-4"><a href=""></a><span class="fu">library</span>(package2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br></p>
+<div class="fragment fade-in">
+<ul>
+<li>Notice too that you don’t need quotes around the package names anymore.</li>
+<li><code>R</code> now recognizes these packages as defined objects with given names</li>
+</ul>
+</div>
+</section>
+<section id="running-code" class="slide level2">
+<h2>Running Code</h2>
+<p>You can run a line of code by placing the cursor before the line or anywhere in the line and pressing ‘Ctrl + Enter’ (Windows) or ‘Cmd + Enter’ (Mac).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a><span class="dv">500</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 500</code></pre>
+</div>
+</div>
+<p>Notice the ‘500’ printed to the console.</p>
+<p>You can also highlight a block of code and run it all at once.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a><span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 100</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href=""></a><span class="dv">200</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 200</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href=""></a><span class="dv">300</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 300</code></pre>
+</div>
+</div>
+</section>
+<section id="basic-math" class="slide level2">
+<h2>Basic Math</h2>
+<p>R is equipped with lost of mathemtaical operations</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href=""></a><span class="dv">5</span> <span class="sc">+</span> <span class="dv">5</span> <span class="co"># Addition</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href=""></a><span class="dv">5</span> <span class="sc">-</span> <span class="dv">5</span> <span class="co"># Subtraction</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href=""></a><span class="dv">5</span> <span class="sc">*</span> <span class="dv">5</span> <span class="co"># Multiplication</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 25</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href=""></a><span class="dv">5</span> <span class="sc">/</span> <span class="dv">5</span> <span class="co"># Division</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href=""></a><span class="dv">5</span> <span class="sc">^</span> <span class="dv">2</span> <span class="co"># Exponentiation (or **)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 25</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href=""></a><span class="fu">log</span>(<span class="dv">100</span>) <span class="co"># Natural log</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4.60517</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -1.382716</code></pre>
+</div>
+</div>
+</section>
+<section id="logical-statements-booleans" class="slide level2">
+<h2>Logical Statements &amp; Booleans</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Test</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>x &lt; y</code></td>
+<td>Less than</td>
+</tr>
+<tr class="even">
+<td><code>x &gt; y</code></td>
+<td>Greater than</td>
+</tr>
+<tr class="odd">
+<td><code>==</code></td>
+<td>Equal to</td>
+</tr>
+<tr class="even">
+<td><code>x &lt;= y</code></td>
+<td>Less than or equal to</td>
+</tr>
+<tr class="odd">
+<td><code>x &gt;= y</code></td>
+<td>Greater than or equal to</td>
+</tr>
+<tr class="even">
+<td><code>x != y</code></td>
+<td>Not equal to</td>
+</tr>
+<tr class="odd">
+<td><code>x | y</code></td>
+<td>Or</td>
+</tr>
+<tr class="even">
+<td><code>x &amp; y</code></td>
+<td>And</td>
+</tr>
+<tr class="odd">
+<td><code>x %in% y</code></td>
+<td>Is in</td>
+</tr>
+<tr class="even">
+<td><code>is.na(x)</code></td>
+<td>Is missing</td>
+</tr>
+<tr class="odd">
+<td><code>!is.na(x)</code></td>
+<td>Is not missing</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="logical-statements-booleans-cont." class="slide level2">
+<h2>Logical Statements &amp; Booleans (cont.)</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href=""></a><span class="dv">1</span> <span class="sc">&gt;</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href=""></a><span class="dv">1</span> <span class="sc">&lt;</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href=""></a><span class="dv">1</span> <span class="sc">==</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href=""></a><span class="dv">1</span> <span class="sc">&lt;</span> <span class="dv">2</span> <span class="sc">|</span> <span class="dv">3</span> <span class="sc">&gt;</span> <span class="dv">4</span> <span class="do">## only one test needs to be true to return TRUE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href=""></a><span class="dv">1</span> <span class="sc">&lt;</span> <span class="dv">2</span> <span class="sc">&amp;</span> <span class="dv">3</span> <span class="sc">&gt;</span> <span class="dv">4</span> <span class="do">## both tests need to be true to return TRUE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+</div>
+</section>
+<section id="logicals-and-boolean-precedence" class="slide level2">
+<h2>Logicals and Boolean Precedence</h2>
+<ul>
+<li><code>R</code> like most other programming languages will evaluate the logical operates (<code>==</code>, <code>&gt;</code>, etc) before the booleans (<code>&amp;</code>, <code>|</code>, etc).</li>
+</ul>
+<div class="fragment fade-in" data-fragment-index="1">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href=""></a><span class="dv">1</span> <span class="sc">&gt;</span> <span class="fl">0.5</span> <span class="sc">&amp;</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment fade-in" data-fragment-index="2">
+<ul>
+<li>In this case, <code>R</code> is evaluating two separate logical statements:</li>
+</ul>
+</div>
+<div class="fragment fade-in" data-fragment-index="3" style="font-size: 80%">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;- <code>1 &gt; 0.5</code>, which is <code>TRUE</code></p>
+</div>
+<div class="fragment fade-in" data-fragment-index="4" style="font-size: 80%">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;- <code>2</code>, which is <code>TRUE</code> because <code>R</code> evaluates it as <code>as.logical(2)</code> which is always <code>TRUE</code></p>
+</div>
+<div class="fragment fade-in" data-fragment-index="5">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href=""></a><span class="dv">1</span> <span class="sc">&gt;</span> <span class="fl">0.5</span> <span class="sc">&amp;</span> <span class="dv">1</span> <span class="sc">&gt;</span> <span class="dv">2</span> <span class="co"># Make two separate logical statements</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="cool-now-what" class="slide level2">
+<h2>Cool, Now What?</h2>
+<div class="fragment fade-in" data-fragment-index="1">
+<ul>
+<li>Many different tasks can be done by combining the basic math and logical statements.</li>
+</ul>
+</div>
+<div class="fragment fade-in" data-fragment-index="2">
+<ul>
+<li>But we may need to set up a group of tests to do something.</li>
+</ul>
+</div>
+<div class="fragment fade-in" data-fragment-index="3">
+<ul>
+<li>We need to <strong><em>Assign them</em></strong> to reuse them later in functions, loops, etc.</li>
+</ul>
+</div>
+</section>
+<section id="assignment" class="slide level2">
+<h2>Assignment</h2>
+<ul>
+<li>The most popular assignment operator in <code>R</code> is <code>&lt;-</code> which is just <code>&lt;</code> followed by <code>-</code>
+<ul>
+<li>Read aloud as “gets”</li>
+</ul></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href=""></a>x <span class="ot">&lt;-</span> <span class="st">"Hello, World!"</span> <span class="co"># note that text need to be wrapped in quotes</span></span>
+<span id="cb41-2"><a href=""></a>x <span class="co"># here you would "call" the variable to return the assigned value</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Hello, World!"</code></pre>
+</div>
+</div>
+<ul>
+<li><code>x</code> is the variable and <code>"Hello, World!"</code> is the value assigned to it</li>
+</ul>
+<p><br></p>
+<div class="fragment fade-in" data-fragment-index="1">
+<ul>
+<li><p>Using <code>=</code> as an assignment operator also works but is not recommended since it is also used to define arguments within functions</p></li>
+<li><p>Mostly a matter of preference but will be easier for other programmers to read</p></li>
+<li><p>Just keep it consistent</p></li>
+</ul>
+</div>
+</section>
+<section id="naming-variables" class="slide level2">
+<h2>Naming Variables</h2>
+<ul>
+<li>Variable names can be anything you want but there are some rules to help make your code more readable:</li>
+</ul>
+<div class="fragment fade-in" data-fragment-index="1">
+<ol type="1">
+<li>Use descriptive names for objects and functions</li>
+</ol>
+</div>
+<div class="fragment fade-in" data-fragment-index="2">
+<ol start="2" type="1">
+<li>Use camelCase or snake_case for naming objects and functions</li>
+</ol>
+</div>
+<div class="fragment fade-in" data-fragment-index="4">
+<ol start="3" type="1">
+<li>Keep names short but descriptive</li>
+</ol>
+</div>
+<div class="fragment fade-in" data-fragment-index="5">
+<ol start="4" type="1">
+<li>Avoid using special characters (e.g.&nbsp;$, %, &amp;, etc.) in variable names</li>
+</ol>
+</div>
+<div class="fragment fade-in" data-fragment-index="6">
+<ol start="5" type="1">
+<li>Don’t start variable names with a number</li>
+</ol>
+</div>
+<div class="fragment fade-in" data-fragment-index="7">
+<ul>
+<li>Some of these rules must be followed to avoid errors, others are just good practice</li>
+</ul>
+</div>
+</section>
+<section id="naming-variables-cont." class="slide level2">
+<h2>Naming Variables (cont.)</h2>
+<p><span style="color:darkgreen"><strong>Good Names</strong></span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href=""></a>avgTemp <span class="ot">&lt;-</span> <span class="dv">75</span> <span class="co"># camelCase</span></span>
+<span id="cb43-2"><a href=""></a>avg_temp <span class="ot">&lt;-</span> <span class="dv">75</span> <span class="co"># snake_case</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><span style="color:darkred"><strong>Bad Names</strong></span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href=""></a>averageTemperature_1_2  <span class="ot">&lt;-</span> <span class="dv">75</span></span>
+<span id="cb44-2"><a href=""></a>avge.T <span class="ot">&lt;-</span> <span class="dv">75</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="fragment fade-in">
+<p>Note the errors in the naming below</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href=""></a><span class="dv">1</span>stAvgTemp <span class="ot">&lt;-</span> <span class="dv">75</span> <span class="co"># Variable name cannot start with a number</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in parse(text = input): &lt;text&gt;:1:2: unexpected symbol
+1: 1stAvgTemp
+     ^</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href=""></a>avgTemp% <span class="ot">&lt;-</span> <span class="dv">75</span> <span class="co"># Variable name cannot contain special characters</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in parse(text = input): &lt;text&gt;:1:8: unexpected input
+1: avgTemp% &lt;- 75 # Variable name cannot contain special characters
+           ^</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="naming-variables-cont.-1" class="slide level2">
+<h2>Naming Variables (cont.)</h2>
+<p>There are some names we can never use because they are reserved for R functions</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href=""></a><span class="cf">if</span></span>
+<span id="cb49-2"><a href=""></a><span class="cf">else</span></span>
+<span id="cb49-3"><a href=""></a><span class="cf">while</span></span>
+<span id="cb49-4"><a href=""></a><span class="cf">function</span></span>
+<span id="cb49-5"><a href=""></a><span class="cf">for</span></span>
+<span id="cb49-6"><a href=""></a><span class="cn">TRUE</span></span>
+<span id="cb49-7"><a href=""></a><span class="cn">FALSE</span></span>
+<span id="cb49-8"><a href=""></a><span class="cn">NULL</span></span>
+<span id="cb49-9"><a href=""></a><span class="cn">Inf</span></span>
+<span id="cb49-10"><a href=""></a><span class="cn">NaN</span></span>
+<span id="cb49-11"><a href=""></a><span class="cn">NA</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>There are more that can’t be used but you’ll see an error if you try to use them</p>
+</section>
+<section id="functions" class="slide level2">
+<h2>Functions</h2>
+<ul>
+<li>Functions are blocks of code that perform a specific task</li>
+<li>Functions can take arguments (inputs) and return values (outputs)</li>
+<li>Functions can be built-in or user-defined</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href=""></a><span class="fu">mean</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5.5</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href=""></a><span class="fu">min</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href=""></a><span class="fu">sd</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) <span class="co"># note the argument is not named</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.02765</code></pre>
+</div>
+</div>
+<ul>
+<li>The argument does not have to be named for all functions, but may be necessary the more arguments a function has.</li>
+</ul>
+<div class="fragment fade-in">
+<ul>
+<li>Use the <code>?</code> operator followed by the function name to view documentation about that function</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href=""></a>?mean <span class="co"># don't need to include parentheses</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="working-with-objects" class="slide level2">
+<h2>Working with objects</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href=""></a>e <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>) <span class="co"># creates a vector</span></span>
+<span id="cb57-2"><a href=""></a></span>
+<span id="cb57-3"><a href=""></a><span class="fu">length</span>(e) <span class="co"># How many things are in there?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href=""></a><span class="fu">sum</span>(e)<span class="sc">/</span><span class="fu">length</span>(e) <span class="co"># Hand calculate mean</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5.5</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href=""></a><span class="fu">mean</span>(e) <span class="co"># R function to calculate mean</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5.5</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href=""></a>e <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,</span>
+<span id="cb63-2"><a href=""></a>                <span class="at">y =</span> <span class="dv">11</span><span class="sc">:</span><span class="dv">15</span>)</span>
+<span id="cb63-3"><a href=""></a>e</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  x  y
+1 1 11
+2 2 12
+3 3 13
+4 4 14
+5 5 15</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href=""></a><span class="fu">mean</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: object 'y' not found</code></pre>
+</div>
+</div>
+</section>
+<section id="global-environment" class="slide level2">
+<h2>Global Environment</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href=""></a>Error<span class="sc">:</span> object <span class="st">'y'</span> not found</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="fragment fade-in">
+<ul>
+<li>The global environment is where all your objects live and can give us a hint about what went wrong</li>
+</ul>
+<p><img data-src="www/env.png" class="absolute" style="top: 250px; left: 160px; width: 600px; height: 450px; "></p>
+</div>
+</section>
+<section id="fixing-our-issue" class="slide level2">
+<h2>Fixing Our Issue</h2>
+<ul>
+<li>To get the mean of <code>y</code> we need to “index” <code>e</code> using the <code>$</code> operator</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href=""></a><span class="fu">mean</span>(e<span class="sc">$</span>y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 13</code></pre>
+</div>
+</div>
+<ul>
+<li>R will look for named objects in the environment</li>
+<li>If the interpreter can’t find <code>y</code> or any other object, it will give up because it does not think it exists</li>
+<li>You need to tell the interpreter what to look for inside of the object</li>
+</ul>
+</section>
+<section id="what-are-objects" class="slide level2">
+<h2>What are Objects?</h2>
+<ul>
+<li>Objects are what we work with in <code>R</code></li>
+</ul>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "is"                      "is.array"               
+ [3] "is.atomic"               "is.call"                
+ [5] "is.character"            "is.complex"             
+ [7] "is.data.frame"           "is.double"              
+ [9] "is.element"              "is.empty.model"         
+[11] "is.environment"          "is.expression"          
+[13] "is.factor"               "is.finite"              
+[15] "is.finite.POSIXlt"       "is.function"            
+[17] "is.hashtab"              "is.infinite"            
+[19] "is.infinite.POSIXlt"     "is.integer"             
+[21] "is.language"             "is.leaf"                
+[23] "is.list"                 "is.loaded"              
+[25] "is.logical"              "is.matrix"              
+[27] "is.mts"                  "is.na"                  
+[29] "is.na.data.frame"        "is.na.numeric_version"  
+[31] "is.na.POSIXlt"           "is.na&lt;-"                
+[33] "is.na&lt;-.default"         "is.na&lt;-.factor"         
+[35] "is.na&lt;-.numeric_version" "is.name"                
+[37] "is.nan"                  "is.nan.POSIXlt"         
+[39] "is.null"                 "is.numeric"             
+[41] "is.numeric.Date"         "is.numeric.difftime"    
+[43] "is.numeric.POSIXt"       "is.numeric_version"     
+[45] "is.object"               "is.ordered"             
+[47] "is.package_version"      "is.pairlist"            
+[49] "is.primitive"            "is.qr"                  
+[51] "is.R"                    "is.raster"              
+[53] "is.raw"                  "is.recursive"           
+[55] "is.relistable"           "is.single"              
+[57] "is.stepfun"              "is.symbol"              
+[59] "is.table"                "is.ts"                  
+[61] "is.tskernel"             "is.unsorted"            
+[63] "is.vector"               "isa"                    
+[65] "isatty"                  "isBaseNamespace"        
+[67] "isClass"                 "isClassDef"             
+[69] "isClassUnion"            "isdebugged"             
+[71] "isFALSE"                 "isGeneric"              
+[73] "isGrammarSymbol"         "isGroup"                
+[75] "isIncomplete"            "islands"                
+[77] "isNamespace"             "isNamespaceLoaded"      
+[79] "ISOdate"                 "ISOdatetime"            
+[81] "isOpen"                  "isoreg"                 
+[83] "isRematched"             "isRestart"              
+[85] "isS3method"              "isS3stdGeneric"         
+[87] "isS4"                    "isSealedClass"          
+[89] "isSealedMethod"          "isSeekable"             
+[91] "isSymmetric"             "isSymmetric.matrix"     
+[93] "isTRUE"                  "isVirtualClass"         
+[95] "isXS3Class"             </code></pre>
+</div>
+</div>
+</section>
+<section id="vectors" class="slide level2">
+<h2>Vectors</h2>
+<ul>
+<li>Come in two types:
+<ul>
+<li><strong>Atomic</strong>: Must be the same type</li>
+<li><strong>Lists</strong>: can be different types</li>
+</ul></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href=""></a>my_vec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
+<span id="cb71-2"><a href=""></a><span class="fu">is.vector</span>(my_vec) <span class="co"># Check if my_vec is a vector</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href=""></a>my_list <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">a =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>), <span class="at">b =</span> <span class="st">"Hello, World!"</span>, <span class="at">c =</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">y =</span> <span class="dv">11</span><span class="sc">:</span><span class="dv">15</span>))</span>
+<span id="cb73-2"><a href=""></a><span class="fu">is.vector</span>(my_list) <span class="co"># Check if my_list is a vector</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<div class="fragment fade-in">
+<p><img data-src="www/veclist.png" class="absolute" style="top: 420px; left: 215px; width: 530px; height: 260px; "></p>
+</div>
+</section>
+<section id="atomic-vectors" class="slide level2">
+<h2>Atomic Vectors</h2>
+<ul>
+<li>Can come in a variety of types:
+<ul>
+<li>Numeric: can contain whole numbers and decimals</li>
+<li>Logicals: can only take two values TRUE or FALSE</li>
+<li>Characters: holds character string</li>
+<li>Factors: used to store categorical data</li>
+</ul></li>
+</ul>
+</section>
+<section id="accessing-vector-elements" class="slide level2">
+<h2>Accessing Vector Elements</h2>
+<ul>
+<li><p>You can access the elements of a vector by “indexing” the position of that element</p></li>
+<li><p>We use the <code>[]</code> operator to index vectors</p></li>
+<li><p>The first element of a vector is at position 1, not 0</p></li>
+<li><p>You can use <code>:</code> to index a range of elements</p></li>
+<li><p>You can use <code>c()</code> to index multiple, non-consecutive elements</p></li>
+<li><p>You can also use negative indexing to exclude elements</p></li>
+<li><p>Lists require <code>[[]]</code> to access the vector, followed by <code>[]</code> to access the elements of that vector</p></li>
+</ul>
+</section>
+<section id="indexing-vectors" class="slide level2">
+<h2>Indexing Vectors</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href=""></a>vec <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">mean =</span> <span class="dv">30</span>, <span class="at">sd =</span> <span class="dv">10</span>) <span class="co"># vector of random values</span></span>
+<span id="cb75-2"><a href=""></a>vec</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 34.50443 42.81318 31.16593 35.42117 38.86524 31.57011 15.00053 25.63777
+ [9] 37.15278 46.83280</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href=""></a>vec[<span class="dv">1</span>] <span class="co"># first element</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 34.50443</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href=""></a>vec[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>] <span class="co"># first 5 elements</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 34.50443 42.81318 31.16593 35.42117 38.86524</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href=""></a>vec[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>)] <span class="co"># first, third, and fifth elements</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 34.50443 31.16593 38.86524</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href=""></a>vec[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>)] <span class="co"># all but the first, third, and fifth elements</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 42.81318 35.42117 31.57011 15.00053 25.63777 37.15278 46.83280</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href=""></a>vec[vec <span class="sc">&gt;</span> <span class="dv">30</span>] <span class="co"># all elements greater than 30</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 34.50443 42.81318 31.16593 35.42117 38.86524 31.57011 37.15278 46.83280</code></pre>
+</div>
+</div>
+</section>
+<section id="indexing-lists" class="slide level2">
+<h2>Indexing Lists</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href=""></a>my_list <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">num =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">name =</span> <span class="fu">c</span>(<span class="st">'Joe'</span>,<span class="st">'Bob'</span>,<span class="st">'Mary'</span>))</span>
+<span id="cb87-2"><a href=""></a>my_list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$num
+[1] 1 2 3 4 5
+
+$name
+[1] "Joe"  "Bob"  "Mary"</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href=""></a>my_list[[<span class="dv">1</span>]] <span class="co"># vector element in the list</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1 2 3 4 5</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href=""></a>my_list[[<span class="dv">2</span>]][<span class="dv">1</span>] <span class="co"># first element of the second vector in the list</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Joe"</code></pre>
+</div>
+</div>
+<p>You can also use the <code>$</code> operator to access list elements by name</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href=""></a>my_list<span class="sc">$</span>num <span class="co"># first vector in the list</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1 2 3 4 5</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href=""></a>my_list<span class="sc">$</span>name[<span class="dv">1</span>] <span class="co"># first element of the second vector in the list</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Joe"</code></pre>
+</div>
+</div>
+</section>
+<section id="your-turn" class="slide level2" data-background-color="#ffeeee">
+<h2>Your Turn</h2>
+<ol type="1">
+<li>Install and load the packages <code>tidyverse</code>, <code>psych</code>, and <code>palmerpenguins</code> using the <code>install.packages()</code> function.</li>
+<li>Make a vector of 100 random values using the <code>rnorm()</code> function and name it <code>vec</code> (hint: use <code>?</code> and read the argument descriptions).</li>
+<li>Use <code>[]</code> indexing to return the first 10 values of the vector.</li>
+<li>Get summary statistics for the vector using the <code>describe()</code> function.</li>
+<li>Plot your data using the <code>plot()</code> function.</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<div class="countdown" id="timer_460e2556" data-update-every="1" data-play-sound="true" tabindex="0" style="right:0px;bottom:0px;font-size:20px;">
+<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+</div>
+</div>
+</section>
+<section id="section-4" class="slide level2" data-background-color="#006791">
+<h2></h2>
+<div style="font-size: 3em; text-align: center; margin-top: 30vh; font-weight:bold;">
+<p>Starting a New Project</p>
+</div>
+</section>
+<section id="create-new-project" class="slide level2">
+<h2>Create New Project</h2>
+<ul>
+<li>Follow these steps to create a new project:
+<ol type="1">
+<li>Go to <code>File</code> in the upper left corner of RStudio</li>
+<li>Select <code>New Project</code></li>
+<li>Select <code>New Directory</code></li>
+<li>Select <code>New Project</code></li>
+<li>Set the <code>Directory name:</code> to <code>penguins</code></li>
+<li>Click <code>Browse...</code> and set the directory to your desktop or other location</li>
+<li>Click <code>Create Project</code></li>
+</ol></li>
+</ul>
+</section>
+<section id="create-new-file" class="slide level2">
+<h2>Create New File</h2>
+<ul>
+<li>Once the new project session has opened make a new file to write code in:
+<ol type="1">
+<li>Go to <code>File</code> in the upper left corner of RStudio</li>
+<li>Select <code>New File</code></li>
+<li>Select <code>R Script</code></li>
+<li>Save the file as <code>penguins.R</code></li>
+</ol></li>
+</ul>
+<div class="fragment fade-in">
+<ul>
+<li>You can also use keyboard shortcuts to make a new file (Ctrl + Shift + N) and save it (Ctrl + S)</li>
+</ul>
+</div>
+</section>
+<section id="data-we-will-use" class="slide level2">
+<h2>Data we Will Use</h2>
+
+<img data-src="www/penguins.png" class="r-stretch quarto-figure-center"><p class="caption">Artwork by <span class="citation" data-cites="allison_horst">@allison_horst</span></p></section>
+<section id="our-data" class="slide level2">
+<h2>Our Data</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href=""></a><span class="fu">head</span>(penguins) <span class="co"># view the first 10 rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 8
+  species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
+  &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
+1 Adelie  Torgersen           39.1          18.7               181        3750
+2 Adelie  Torgersen           39.5          17.4               186        3800
+3 Adelie  Torgersen           40.3          18                 195        3250
+4 Adelie  Torgersen           NA            NA                  NA          NA
+5 Adelie  Torgersen           36.7          19.3               193        3450
+6 Adelie  Torgersen           39.3          20.6               190        3650
+# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
+</div>
+</div>
+<div class="fragment fade-in" data-fragment-index="1">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href=""></a><span class="fu">str</span>(penguins) <span class="co"># view the structure of the data</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tibble [344 × 8] (S3: tbl_df/tbl/data.frame)
+ $ species          : Factor w/ 3 levels "Adelie","Chinstrap",..: 1 1 1 1 1 1 1 1 1 1 ...
+ $ island           : Factor w/ 3 levels "Biscoe","Dream",..: 3 3 3 3 3 3 3 3 3 3 ...
+ $ bill_length_mm   : num [1:344] 39.1 39.5 40.3 NA 36.7 39.3 38.9 39.2 34.1 42 ...
+ $ bill_depth_mm    : num [1:344] 18.7 17.4 18 NA 19.3 20.6 17.8 19.6 18.1 20.2 ...
+ $ flipper_length_mm: int [1:344] 181 186 195 NA 193 190 181 195 193 190 ...
+ $ body_mass_g      : int [1:344] 3750 3800 3250 NA 3450 3650 3625 4675 3475 4250 ...
+ $ sex              : Factor w/ 2 levels "female","male": 2 1 1 NA 1 2 1 2 NA NA ...
+ $ year             : int [1:344] 2007 2007 2007 2007 2007 2007 2007 2007 2007 2007 ...</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment fade-in" data-fragment-index="2">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href=""></a><span class="fu">View</span>(penguins) <span class="co"># view the data in a new window</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="indexing-data-frames" class="slide level2">
+<h2>Indexing Data Frames</h2>
+<div style="font-size: 80%;">
+<ul>
+<li>We can use column position to index objects.</li>
+<li>There are two slots we can use to extract data: <em>rows</em> and <em>columns</em></li>
+<li><code>object_name[row, column]</code></li>
+<li>We can also subset out data by column position using <code>:</code> or <code>c(column_1, column_2)</code></li>
+</ul>
+</div>
+<div class="fragment fade-in" data-fragment-index="1">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href=""></a>penguins[<span class="dv">1</span>,<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+  species
+  &lt;fct&gt;  
+1 Adelie </code></pre>
+</div>
+</div>
+</div>
+<div class="fragment fade-in" data-fragment-index="2">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href=""></a>penguins[<span class="dv">1</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 2
+  species island   
+  &lt;fct&gt;   &lt;fct&gt;    
+1 Adelie  Torgersen</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment fade-in" data-fragment-index="3">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href=""></a>penguins[<span class="dv">1</span>, <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">4</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 2
+  species bill_depth_mm
+  &lt;fct&gt;           &lt;dbl&gt;
+1 Adelie           18.7</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="negative-indexing" class="slide level2">
+<h2>Negative Indexing</h2>
+<ul>
+<li>We can also exclude various elements using <code>-</code> and/or logical tests</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href=""></a>penguins[,<span class="sc">-</span><span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 344 × 7
+   island bill_length_mm bill_depth_mm flipper_length_mm body_mass_g sex    year
+   &lt;fct&gt;           &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt; &lt;fct&gt; &lt;int&gt;
+ 1 Torge…           39.1          18.7               181        3750 male   2007
+ 2 Torge…           39.5          17.4               186        3800 fema…  2007
+ 3 Torge…           40.3          18                 195        3250 fema…  2007
+ 4 Torge…           NA            NA                  NA          NA &lt;NA&gt;   2007
+ 5 Torge…           36.7          19.3               193        3450 fema…  2007
+ 6 Torge…           39.3          20.6               190        3650 male   2007
+ 7 Torge…           38.9          17.8               181        3625 fema…  2007
+ 8 Torge…           39.2          19.6               195        4675 male   2007
+ 9 Torge…           34.1          18.1               193        3475 &lt;NA&gt;   2007
+10 Torge…           42            20.2               190        4250 &lt;NA&gt;   2007
+# ℹ 334 more rows</code></pre>
+</div>
+</div>
+<div class="fragment fade-in">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href=""></a><span class="fu">names</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "species"           "island"            "bill_length_mm"   
+[4] "bill_depth_mm"     "flipper_length_mm" "body_mass_g"      
+[7] "sex"               "year"             </code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="indexing" class="slide level2">
+<h2><code>$</code> Indexing</h2>
+<p>A more common way to index data is to use the <code>$</code> operator to reference data by name rather than posision.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href=""></a>penguins<span class="sc">$</span>species</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  [1] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   
+  [8] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   
+ [15] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   
+ [22] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   
+ [29] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   
+ [36] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   
+ [43] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   
+ [50] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   
+ [57] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   
+ [64] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   
+ [71] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   
+ [78] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   
+ [85] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   
+ [92] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   
+ [99] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   
+[106] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   
+[113] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   
+[120] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   
+[127] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   
+[134] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   
+[141] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   
+[148] Adelie    Adelie    Adelie    Adelie    Adelie    Gentoo    Gentoo   
+[155] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   
+[162] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   
+[169] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   
+[176] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   
+[183] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   
+[190] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   
+[197] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   
+[204] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   
+[211] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   
+[218] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   
+[225] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   
+[232] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   
+[239] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   
+[246] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   
+[253] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   
+[260] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   
+[267] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   
+[274] Gentoo    Gentoo    Gentoo    Chinstrap Chinstrap Chinstrap Chinstrap
+[281] Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap
+[288] Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap
+[295] Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap
+[302] Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap
+[309] Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap
+[316] Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap
+[323] Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap
+[330] Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap
+[337] Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap
+[344] Chinstrap
+Levels: Adelie Chinstrap Gentoo</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb114"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href=""></a>penguins<span class="sc">$</span>species[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] Adelie Adelie Adelie Adelie Adelie Adelie Adelie Adelie Adelie Adelie
+Levels: Adelie Chinstrap Gentoo</code></pre>
+</div>
+</div>
+</section>
+<section id="indexing-by-tests" class="slide level2">
+<h2>Indexing by Tests</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb116"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb116-1"><a href=""></a>penguins[penguins[<span class="st">"sex"</span>] <span class="sc">==</span> <span class="st">'female'</span>, <span class="fu">c</span>(<span class="st">'species'</span>, <span class="st">'sex'</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 176 × 2
+   species sex   
+   &lt;fct&gt;   &lt;fct&gt; 
+ 1 Adelie  female
+ 2 Adelie  female
+ 3 &lt;NA&gt;    &lt;NA&gt;  
+ 4 Adelie  female
+ 5 Adelie  female
+ 6 &lt;NA&gt;    &lt;NA&gt;  
+ 7 &lt;NA&gt;    &lt;NA&gt;  
+ 8 &lt;NA&gt;    &lt;NA&gt;  
+ 9 &lt;NA&gt;    &lt;NA&gt;  
+10 Adelie  female
+# ℹ 166 more rows</code></pre>
+</div>
+</div>
+<div class="fragment fade-in">
+<p>However, this is not the most efficient or (more importantly) readable way to do this…</p>
+</div>
+</section>
+<section id="a-very-brief-introduction-to-tidyverse" class="slide level2">
+<h2>A (very) Brief Introduction to Tidyverse</h2>
+<ul>
+<li>The <code>tidyverse</code> is a collection of packages that work together to make data analysis easier and more efficient.</li>
+<li>The <code>tidyverse</code> is built around the idea of “tidy data” which is a way of organizing data so that it is easy to work with.</li>
+<li>Part of the <code>tidyverse</code> is the idea of “piping” which allows you to chain together multiple functions to create a single workflow.
+<ul>
+<li>The pipe operator can be written as <code>%&gt;%</code> or <code>|&gt;</code></li>
+</ul></li>
+</ul>
+<p><img data-src="www/tidyverse.png" class="absolute" style="top: 360px; left: 747px; width: 250px; height: 270px; "></p>
+</section>
+<section id="the-tidyverse-ecosystem" class="slide level2">
+<h2>The Tidyverse Ecosystem</h2>
+<p>The <code>tidyverse</code> is a package that installs other packages used for data wrangling, analysis, and visualisation and include:</p>
+<ul>
+<li><code>ggplot2</code>: data visualisation</li>
+<li><code>dplyr</code>: data manipulation</li>
+<li><code>tidyr</code>: data tidying</li>
+<li><code>readr</code>: data import</li>
+<li><code>purrr</code>: functional programming</li>
+<li><code>tibble</code>: data frames</li>
+<li><code>stringr</code>: string manipulation</li>
+<li><code>forcats</code>: categorical variables</li>
+<li><code>lubridate</code>: date and time manipulation</li>
+</ul>
+<p><img data-src="www/eco.png" class="absolute" style="top: 130px; left: 650px; width: 380px; height: 520px; "></p>
+</section>
+<section id="piping-functions" class="slide level2">
+<h2>Piping Functions</h2>
+<p>Any guesses?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb118"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb118-1"><a href=""></a><span class="fu">round</span>(<span class="fu">log</span>(<span class="fu">mean</span>(penguins<span class="sc">$</span>body_mass_g[penguins<span class="sc">$</span>species <span class="sc">==</span> <span class="st">'Adelie'</span> <span class="sc">&amp;</span> penguins<span class="sc">$</span>island <span class="sc">==</span> <span class="st">'Torgersen'</span>], </span>
+<span id="cb118-2"><a href=""></a>           <span class="at">na.rm =</span> <span class="cn">TRUE</span>)), <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 8</code></pre>
+</div>
+</div>
+<div class="fragment fade-in" data-fragment-index="1">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb120" data-code-line-numbers="1-6|1|2|3|4|5|6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb120-1"><a href=""></a>penguins <span class="sc">|&gt;</span> <span class="co"># start with the dataset</span></span>
+<span id="cb120-2"><a href=""></a>  <span class="fu">filter</span>(species <span class="sc">==</span> <span class="st">'Adelie'</span>, island <span class="sc">==</span> <span class="st">'Torgersen'</span>) <span class="sc">|&gt;</span> <span class="co"># filter the data </span></span>
+<span id="cb120-3"><a href=""></a>  <span class="fu">summarise</span>(<span class="at">mean_mass =</span> <span class="fu">mean</span>(body_mass_g, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span> <span class="co"># calculate the mean</span></span>
+<span id="cb120-4"><a href=""></a>  <span class="fu">pull</span>(mean_mass) <span class="sc">|&gt;</span> <span class="co"># pull out the mean mass</span></span>
+<span id="cb120-5"><a href=""></a>  <span class="fu">log</span>() <span class="sc">|&gt;</span> <span class="co"># notice no arguments inside parentheses</span></span>
+<span id="cb120-6"><a href=""></a>  <span class="fu">round</span>(<span class="dv">0</span>) <span class="co"># round the result</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 8</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment fade-in" data-fragment-index="2">
+<p>Although the piping adds lines, it makes the code much more readable</p>
+</div>
+</section>
+<section id="example" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Example</h2>
+<p>What is the average bill length?</p>
+</section>
+<section id="example-1" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Example</h2>
+<p>What is the average bill length?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb122"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb122-1" class="hljs-ln-code"><a href=""></a>penguins<span class="sc">$</span>bill_length_mm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  [1] 39.1 39.5 40.3   NA 36.7 39.3 38.9 39.2 34.1 42.0 37.8 37.8 41.1 38.6 34.6
+ [16] 36.6 38.7 42.5 34.4 46.0 37.8 37.7 35.9 38.2 38.8 35.3 40.6 40.5 37.9 40.5
+ [31] 39.5 37.2 39.5 40.9 36.4 39.2 38.8 42.2 37.6 39.8 36.5 40.8 36.0 44.1 37.0
+ [46] 39.6 41.1 37.5 36.0 42.3 39.6 40.1 35.0 42.0 34.5 41.4 39.0 40.6 36.5 37.6
+ [61] 35.7 41.3 37.6 41.1 36.4 41.6 35.5 41.1 35.9 41.8 33.5 39.7 39.6 45.8 35.5
+ [76] 42.8 40.9 37.2 36.2 42.1 34.6 42.9 36.7 35.1 37.3 41.3 36.3 36.9 38.3 38.9
+ [91] 35.7 41.1 34.0 39.6 36.2 40.8 38.1 40.3 33.1 43.2 35.0 41.0 37.7 37.8 37.9
+[106] 39.7 38.6 38.2 38.1 43.2 38.1 45.6 39.7 42.2 39.6 42.7 38.6 37.3 35.7 41.1
+[121] 36.2 37.7 40.2 41.4 35.2 40.6 38.8 41.5 39.0 44.1 38.5 43.1 36.8 37.5 38.1
+[136] 41.1 35.6 40.2 37.0 39.7 40.2 40.6 32.1 40.7 37.3 39.0 39.2 36.6 36.0 37.8
+[151] 36.0 41.5 46.1 50.0 48.7 50.0 47.6 46.5 45.4 46.7 43.3 46.8 40.9 49.0 45.5
+[166] 48.4 45.8 49.3 42.0 49.2 46.2 48.7 50.2 45.1 46.5 46.3 42.9 46.1 44.5 47.8
+[181] 48.2 50.0 47.3 42.8 45.1 59.6 49.1 48.4 42.6 44.4 44.0 48.7 42.7 49.6 45.3
+[196] 49.6 50.5 43.6 45.5 50.5 44.9 45.2 46.6 48.5 45.1 50.1 46.5 45.0 43.8 45.5
+[211] 43.2 50.4 45.3 46.2 45.7 54.3 45.8 49.8 46.2 49.5 43.5 50.7 47.7 46.4 48.2
+[226] 46.5 46.4 48.6 47.5 51.1 45.2 45.2 49.1 52.5 47.4 50.0 44.9 50.8 43.4 51.3
+[241] 47.5 52.1 47.5 52.2 45.5 49.5 44.5 50.8 49.4 46.9 48.4 51.1 48.5 55.9 47.2
+[256] 49.1 47.3 46.8 41.7 53.4 43.3 48.1 50.5 49.8 43.5 51.5 46.2 55.1 44.5 48.8
+[271] 47.2   NA 46.8 50.4 45.2 49.9 46.5 50.0 51.3 45.4 52.7 45.2 46.1 51.3 46.0
+[286] 51.3 46.6 51.7 47.0 52.0 45.9 50.5 50.3 58.0 46.4 49.2 42.4 48.5 43.2 50.6
+[301] 46.7 52.0 50.5 49.5 46.4 52.8 40.9 54.2 42.5 51.0 49.7 47.5 47.6 52.0 46.9
+[316] 53.5 49.0 46.2 50.9 45.5 50.9 50.8 50.1 49.0 51.5 49.8 48.1 51.4 45.7 50.7
+[331] 42.5 52.2 45.2 49.3 50.2 45.6 51.9 46.8 45.7 55.8 43.5 49.6 50.8 50.2</code></pre>
+</div>
+</div>
+</section>
+<section id="example-2" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Example</h2>
+<p>What is the average bill length?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb124"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb124-1" class="hljs-ln-code"><a href=""></a><span class="fu">mean</span>(penguins<span class="sc">$</span>bill_length_mm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] NA</code></pre>
+</div>
+</div>
+</section>
+<section id="example-3" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Example</h2>
+<p>What is the average bill length?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb126"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb126-1" class="hljs-ln-code"><a href=""></a><span class="fu">mean</span>(penguins<span class="sc">$</span>bill_length_mm, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 43.92193</code></pre>
+</div>
+</div>
+</section>
+<section id="example-4" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Example</h2>
+<p>What is the average bill length?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb128"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb128-1"><a href=""></a><span class="fu">mean</span>(penguins<span class="sc">$</span>bill_length_mm, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 43.92193</code></pre>
+</div>
+</div>
+<p>Tidyverse version:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb130"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb130-1"><a href=""></a>penguins <span class="sc">|&gt;</span></span>
+<span id="cb130-2"><a href=""></a>  <span class="fu">summarise</span>(<span class="at">mean_bill_length =</span> <span class="fu">mean</span>(bill_length_mm, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+  mean_bill_length
+             &lt;dbl&gt;
+1             43.9</code></pre>
+</div>
+</div>
+</section>
+<section id="example-5" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Example</h2>
+<p>Get the average body mass of male chinstrap penguins after 2007.</p>
+</section>
+<section id="example-6" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Example</h2>
+<p>Get the average body mass of male chinstrap penguins after 2007.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb132"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb132-1" class="hljs-ln-code"><a href=""></a>penguins </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 344 × 8
+   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
+   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
+ 1 Adelie  Torgersen           39.1          18.7               181        3750
+ 2 Adelie  Torgersen           39.5          17.4               186        3800
+ 3 Adelie  Torgersen           40.3          18                 195        3250
+ 4 Adelie  Torgersen           NA            NA                  NA          NA
+ 5 Adelie  Torgersen           36.7          19.3               193        3450
+ 6 Adelie  Torgersen           39.3          20.6               190        3650
+ 7 Adelie  Torgersen           38.9          17.8               181        3625
+ 8 Adelie  Torgersen           39.2          19.6               195        4675
+ 9 Adelie  Torgersen           34.1          18.1               193        3475
+10 Adelie  Torgersen           42            20.2               190        4250
+# ℹ 334 more rows
+# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="example-7" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Example</h2>
+<p>Get the average body mass of male chinstrap penguins after 2007.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb134"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb134-1" class="hljs-ln-code"><a href=""></a>penguins <span class="sc">|&gt;</span></span>
+<span id="cb134-2" class="hljs-ln-code"><a href=""></a>  <span class="fu">filter</span>(sex <span class="sc">==</span> <span class="st">'male'</span>, species <span class="sc">==</span> <span class="st">'Chinstrap'</span>, year <span class="sc">&gt;</span> <span class="dv">2007</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 21 × 8
+   species   island bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
+   &lt;fct&gt;     &lt;fct&gt;           &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
+ 1 Chinstrap Dream            49.5          19                 200        3800
+ 2 Chinstrap Dream            52.8          20                 205        4550
+ 3 Chinstrap Dream            54.2          20.8               201        4300
+ 4 Chinstrap Dream            51            18.8               203        4100
+ 5 Chinstrap Dream            49.7          18.6               195        3600
+ 6 Chinstrap Dream            52            20.7               210        4800
+ 7 Chinstrap Dream            53.5          19.9               205        4500
+ 8 Chinstrap Dream            49            19.5               210        3950
+ 9 Chinstrap Dream            50.9          19.1               196        3550
+10 Chinstrap Dream            50.8          18.5               201        4450
+# ℹ 11 more rows
+# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="example-8" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Example</h2>
+<p>Get the average body mass of male chinstrap penguins after 2007.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb136"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb136-1" class="hljs-ln-code"><a href=""></a>penguins <span class="sc">|&gt;</span></span>
+<span id="cb136-2" class="hljs-ln-code"><a href=""></a>  <span class="fu">filter</span>(sex <span class="sc">==</span> <span class="st">'male'</span>, species <span class="sc">==</span> <span class="st">'Chinstrap'</span>, year <span class="sc">&gt;</span> <span class="dv">2007</span>) <span class="sc">|&gt;</span></span>
+<span id="cb136-3" class="hljs-ln-code"><a href=""></a>  <span class="fu">summarise</span>(<span class="at">mean_mass =</span> <span class="fu">mean</span>(body_mass_g, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+  mean_mass
+      &lt;dbl&gt;
+1     4013.</code></pre>
+</div>
+</div>
+</section>
+<section id="your-turn-1" class="slide level2" data-background-color="#ffeeee">
+<h2>Your Turn</h2>
+<ol type="1">
+<li><p>Find the minimum value of <code>flipper_length_mm</code></p></li>
+<li><p>Find the maximum values of <code>body_mass_g</code></p></li>
+<li><p>Filter the data any way you want using the column position or <code>$</code></p></li>
+<li><p>Assign steps 1-3 to individual objects</p></li>
+</ol>
+<p><br></p>
+<div class="fragment fade-in">
+<p><strong>BONUS</strong></p>
+<p>Create a new data object of body mass and flipper length for all penguins, then plot them against each other using the <code>plot()</code> function.</p>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div class="countdown" id="timer_51ebc501" data-update-every="1" data-play-sound="true" tabindex="0" style="right:0px;bottom:0px;font-size:20px;">
+<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+</div>
+</div>
+</section>
+<section id="section-5" class="slide level2" data-background-color="#006791">
+<h2></h2>
+<div style="font-size: 3em; text-align: center; margin-top: 30vh; font-weight:bold;">
+<p>Tidy Data</p>
+</div>
+</section>
+<section id="what-is-tidy-data" class="slide level2">
+<h2>What is Tidy Data?</h2>
+<ul>
+<li>A consistent way of organizing data to make it easier to work with.</li>
+<li>80% of of data analysis is spent cleaning and preparing the data (Dasu and Johnson 2003).</li>
+<li>It’s better to make a dataset tidy from the start rather than trying to fix it later.</li>
+<li>The <code>tidyverse</code> is built around the idea of tidy data.</li>
+</ul>
+</section>
+<section id="rules-for-tidy-data" class="slide level2">
+<h2>Rules for Tidy Data</h2>
+<p>Tabular data should be rectangular and flat</p>
+<ol type="1">
+<li>Each variable must have its own column</li>
+<li>Each observation must have its own row</li>
+<li>Each value must have its own cell</li>
+</ol>
+<p><img data-src="www/tidy.png" class="absolute" style="top: 300px; left: 0px; width: 815px; height: 280px; "></p>
+</section>
+<section id="excel-abuse" class="slide level2">
+<h2>Excel Abuse</h2>
+<ul>
+<li>Excel is a great tool but can be dangerous since you can abuse your data easily.</li>
+<li>Excel can be used to store data but use of formulas should be limited.</li>
+<li>Workflow can be embedded across sheets and difficult to follow.</li>
+</ul>
+<div class="fragment fade-in">
+<p><img data-src="www/excel_bad.png" class="absolute" style="top: 260px; left: 50px; width: 800px; height: 415px; "></p>
+</div>
+</section>
+<section id="tidy-penguins" class="slide level2">
+<h2>Tidy Penguins</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb138"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb138-1"><a href=""></a>penguins</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 344 × 8
+   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
+   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
+ 1 Adelie  Torgersen           39.1          18.7               181        3750
+ 2 Adelie  Torgersen           39.5          17.4               186        3800
+ 3 Adelie  Torgersen           40.3          18                 195        3250
+ 4 Adelie  Torgersen           NA            NA                  NA          NA
+ 5 Adelie  Torgersen           36.7          19.3               193        3450
+ 6 Adelie  Torgersen           39.3          20.6               190        3650
+ 7 Adelie  Torgersen           38.9          17.8               181        3625
+ 8 Adelie  Torgersen           39.2          19.6               195        4675
+ 9 Adelie  Torgersen           34.1          18.1               193        3475
+10 Adelie  Torgersen           42            20.2               190        4250
+# ℹ 334 more rows
+# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="example-9" class="slide level2">
+<h2>Example</h2>
+<p>Notice anything wrong?</p>
+<p><img data-src="www/untidy.png" class="absolute" style="top: 115px; left: 0px; width: 800px; height: 300px; "></p>
+<div style="margin-top:10em;">
+
+</div>
+<div class="fragment fade-in">
+<ul>
+<li>Unnecessary info at top can be moved to different sheet</li>
+<li>Inconsistent date formats</li>
+<li>Adding extra info to cells (units next to values)</li>
+<li>Coloring cells and leaving stand-alone cells (ok if color key in different sheet)</li>
+<li>Unnecessary table setup</li>
+</ul>
+</div>
+<div class="fragment fade-in">
+<p><img data-src="www/tidy_excel.png" class="absolute" style="top: 0px; left: 830px; width: 340px; height: 275px; "></p>
+</div>
+<div class="fragment fade-in">
+<p><img data-src="www/tidy_excel2.png" class="absolute" style="top: 280px; left: 830px; width: 340px; height: 275px; "></p>
+</div>
+</section>
+<section id="section-6" class="slide level2">
+<h2></h2>
+<p><img data-src="www/wedidit.gif" class="absolute" style="top: 100px; left: 110px; width: 800px; height: 400px; "></p>
+</section>
+<section id="continue-learning-and-practicing" class="slide level2">
+<h2>Continue Learning and Practicing!</h2>
+<ul>
+<li><a href="https://r4ds.had.co.nz/">R for Data Science</a> by Hadley Wickham and Garrett Grolemund</li>
+<li><a href="https://www.bigbookofr.com/">Big Book of R</a> by Oscar Baruffa</li>
+<li><a href="https://rstudio.github.io/cheatsheets/html/rstudio-ide.html?_gl=1*qpfst1*_ga*NzM5Njk3Njk4LjE2OTI2MzYxODk.*_ga_2C0WZ1JHG0*MTc0NjE5ODU0My4xNjQuMC4xNzQ2MTk4NTQzLjAuMC4w">RStudio Cheatsheet</a></li>
+<li>YouTube videos, CodeAcademy, DataCamp</li>
+<li>Practice, practice, practice</li>
+<li>Don’t feel like you have to memorize everything, Google is your friend</li>
+</ul>
+</section>
+<section id="thank-you" class="slide level2">
+<h2>Thank you!</h2>
+<!-- You have to type 'quarto add quarto-ext/fontawesome' into the terminal
+to download the fontawesome extension for this to work-->
+<div class="columns">
+<div class="column">
+<p><br></p>
+<p><i class="fa-solid fa-file-powerpoint" aria-label="file-powerpoint"></i> <a href="https://rpubs.com/aman11/r_workshop">rpubs.com/aman11/r_workshop</a></p>
+<p><i class="fa-brands fa-github" aria-label="github"></i> <a href="https://github.com/PCDEM/R_Workshop">PCDEM/R_Workshop</a></p>
+<p><i class="fa-brands fa-linkedin" aria-label="linkedin"></i> <a href="https://www.linkedin.com/in/alex-manos-228115113/">alex-manos</a></p>
+<p><i class="fa-solid fa-envelope" aria-label="envelope"></i> <a href="mailto:almanos@pinellas.gov">almanos@pinellas.gov</a></p>
+</div><div class="column">
+<p><img data-src="www/pres_qr.png" class="absolute" style="top: 125px; left: 550px; width: 400px; height: 400px; "></p>
+</div></div>
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<p><img src="www/pinellas_logo.png" class="slide-logo"></p>
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="pres_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="pres_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="pres_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="pres_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="pres_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="pres_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="pres_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="pres_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="pres_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="pres_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': false,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+
+    <script>
+
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
+      // slide changes (different for each slide format).
+
+      (function () {
+
+        // dispatch for htmlwidgets
+
+        function fireSlideEnter() {
+
+          const event = window.document.createEvent("Event");
+
+          event.initEvent("slideenter", true, true);
+
+          window.document.dispatchEvent(event);
+
+        }
+
+    
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          fireSlideEnter();
+
+    
+
+          // dispatch for shiny
+
+          if (window.jQuery) {
+
+            if (previousSlide) {
+
+              window.jQuery(previousSlide).trigger("hidden");
+
+            }
+
+            if (currentSlide) {
+
+              window.jQuery(currentSlide).trigger("shown");
+
+            }
+
+          }
+
+        }
+
+    
+
+        // hookup for slidy
+
+        if (window.w3c_slidy) {
+
+          window.w3c_slidy.add_observer(function (slide_num) {
+
+            // slide_num starts at position 1
+
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
+          });
+
+        }
+
+    
+
+      })();
+
+    </script>
+
+    
+
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+            const codeEl = trigger.previousElementSibling.cloneNode(true);
+            for (const childEl of codeEl.children) {
+              if (isCodeAnnotation(childEl)) {
+                childEl.remove();
+              }
+            }
+            return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>
