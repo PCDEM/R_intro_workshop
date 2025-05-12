@@ -17,7 +17,7 @@ format:
 cntdn <- function(){
   library(countdown)
   countdown(
-    minutes = 5,
+    minutes = 10,
     seconds = 0,
     play_sound = TRUE,
     bottom = "0px",
@@ -31,18 +31,15 @@ cntdn <- function(){
 ```
 
 
-## DISCLAIMER {background-color="#fa6666"}
+## {background-color="#fa6666"}
 
+::: {style="font-size: 3em; text-align: center; margin-top: 30vh; font-weight:bold;"}
+DISCLAIMER
+:::
+
+::: {style="font-size: 1.2em; text-align: center; margin-top: 5vh;"}
 I am **not** a computer scientist, I'm just a guy that likes data
-
-<!-- <img src="www/me.png" style=" -->
-<!--   width:250; -->
-<!--   height:375px; -->
-<!--   border-radius: 12px; -->
-<!--   position: absolute; -->
-<!--   top: 200px; -->
-<!--   left: 800px; -->
-<!-- "> -->
+:::
 
 ## Outline
 
@@ -325,6 +322,10 @@ format:
 ---
 ```
 
+![](www/slide1.png){style="border: 2px solid black; width: 200px;" .absolute top="310" left="700" width="400" height="200"} 
+
+
+
 ## AI and Coding
 
 -  AI is a powerful tool for generating code, but it is not perfect
@@ -336,12 +337,12 @@ format:
   + You can get code that works and generates results but are wrong
   + You need to understand the code and know how to problem-solve
 
-![](www/vibe2.png){.absolute top="160" left="890" width="330" height="330"}
-
+![](www/vibe2.png){.absolute top="350" left="715" width="300" height="300"}
+![](www/stop.png){.absolute top="350" left="715" width="300" height="300"}
 :::
 
-![](www/gpt.png){.absolute top="400" left="0" width="530" height="150"}
-![](www/copilot.png){.absolute top="400" left="650" width="350" height="250"}
+![](www/gpt.png){.absolute top="400" left="0" width="400" height="110"}
+![](www/copilot.png){.absolute top="400" left="350" width="300" height="200"}
 
 
 ##  {background-color="#006791"}
@@ -432,6 +433,26 @@ Output from code <br> displayed here
 :::
 
 
+## Running Code
+
+You can run a line of code by placing the cursor before the line or anywhere
+in the line and pressing 'Ctrl + Enter' (Windows) or 'Cmd + Enter' (Mac).
+
+```{r echo=TRUE, eval=TRUE}
+500
+```
+
+Notice the '500' printed to the console.
+
+You can also highlight a block of code and run it all at once. 
+```{r echo=TRUE}
+100
+200
+300
+```
+
+
+
 ## Setting Your Working Directory
 
 - Your working directory is where all your files live
@@ -488,25 +509,6 @@ library(package2)
 :::
 
 
-## Running Code
-
-You can run a line of code by placing the cursor before the line or anywhere
-in the line and pressing 'Ctrl + Enter' (Windows) or 'Cmd + Enter' (Mac).
-
-```{r echo=TRUE, eval=TRUE}
-500
-```
-
-Notice the '500' printed to the console.
-
-You can also highlight a block of code and run it all at once. 
-```{r echo=TRUE}
-100
-200
-300
-```
-
-
 ## Basic Math
 
 R is equipped with lost of mathemtaical operations
@@ -528,15 +530,15 @@ R is equipped with lost of mathemtaical operations
 ```
 
 ```{r echo=TRUE}
-5 ^ 2 # Exponentiation (or **)
+5 ^ 5 # Exponentiation (or **)
 ```
 
 ```{r echo=TRUE}
 log(100) # Natural log
 ```
 
-```{r}
-10*10/(3^4*2)-2 # PEMDAS
+```{r, echo=TRUE}
+6*4/(2^2*3)-2 # PEMDAS
 ```
 
 ## Logical Statements & Booleans
@@ -568,6 +570,10 @@ log(100) # Natural log
 
 ```{r echo=TRUE}
 1 == 2
+```
+
+```{r echo=TRUE}
+1 != 2
 ```
 
 ```{r echo=TRUE}
@@ -686,8 +692,8 @@ avg_temp <- 75 # snake_case
 [**Bad Names**]{style="color:darkred"}
 
 ```{r, echo=TRUE}
-averageTemperature_1_2  <- 75
-avge.T <- 75
+avarageTemperature_1_2  <- 75 # misspelled "average" and too long
+avge.T <- 75 # not descriptive enough
 ```
 
 :::{.fragment .fade-in}
@@ -708,11 +714,16 @@ avgTemp% <- 75 # Variable name cannot contain special characters
 There are some names we can never use because they are reserved for R functions
 
 ```{r, echo=TRUE, eval=FALSE}
+# Control structures
 if
 else
 while
-function
 for
+
+# Function definition
+function
+
+# Constants
 TRUE
 FALSE
 NULL
@@ -756,7 +767,7 @@ that function
 ## Working with objects
 
 ```{r, echo=TRUE}
-e <- c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10) # creates a vector
+e <- c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10) # use c() to combine values into a vector
 
 length(e) # How many things are in there?
 ```
@@ -820,13 +831,13 @@ apropos("^is")
   + **Lists**: can be different types
   
 ```{r, echo=TRUE}
-my_vec <- c(1:10)
-is.vector(my_vec) # Check if my_vec is a vector
+myVec <- 1:10
+is.vector(myVec) # Check if my_vec is a vector
 ```
 
 ```{r, echo=TRUE}
-my_list <- list(a = c(1:4), b = "Hello, World!", c = data.frame(x = 1:5, y = 11:15))
-is.vector(my_list) # Check if my_list is a vector
+myList <- list(a = 1:4, b = "Hello, World!", c = data.frame(x = 1:5, y = 11:15))
+is.vector(myList) # Check if my_list is a vector
 ```
 
 :::{.fragment .fade-in}
@@ -885,26 +896,26 @@ vec[vec > 30] # all elements greater than 30
 ## Indexing Lists
 
 ```{r, echo=TRUE}
-my_list <- list(num = 1:5, name = c('Joe','Bob','Mary'))
-my_list
+myList <- list(num = 1:5, name = c('Joe','Bob','Mary'))
+myList
 ```
 
 ```{r, echo=TRUE}
-my_list[[1]] # vector element in the list
+myList[[1]] # vector element in the list
 ```
 
 ```{r, echo=TRUE}
-my_list[[2]][1] # first element of the second vector in the list
+myList[[2]][1] # first element of the second vector in the list
 ```
 
 You can also use the `$` operator to access list elements by name
 
 ```{r, echo=TRUE}
-my_list$num # first vector in the list
+myList$num # first vector in the list
 ```
 
 ```{r, echo=TRUE}
-my_list$name[1] # first element of the second vector in the list
+myList$name[1] # first element of the second vector in the list
 ```
 
 
@@ -912,11 +923,11 @@ my_list$name[1] # first element of the second vector in the list
 ## Your Turn {background-color="#ffeeee"}
 
 1) Install and load the packages `tidyverse`, `psych`, and `palmerpenguins`
-using the `install.packages()` function.
+using the `install.packages()` and `library()` functions.
 2) Make a vector of 100 random values using the `rnorm()` function and name it 
-`vec` (hint: use `?` and read the argument descriptions).
-3) Use `[]` indexing to return the first 10 values of the vector.
-4) Get summary statistics for the vector using the `describe()` function.
+`vec` (hint: use `?rnorm` to read the argument descriptions).
+3) Get summary statistics for the vector using the `describe()` function.
+4) Use `[]` indexing to return the first 10 values of the vector.
 5) Plot your data using the `plot()` function.
 
 
@@ -1064,18 +1075,18 @@ However, this is not the most efficient or (more importantly) readable way to do
 
 ## The Tidyverse Ecosystem
 
-The `tidyverse` is a package that installs other packages used for data wrangling,
+The [tidyverse](https://www.tidyverse.org/) is a package that installs other packages used for data wrangling,
 analysis, and visualisation and include:
 
-- `ggplot2`: data visualisation
-- `dplyr`: data manipulation
-- `tidyr`: data tidying
-- `readr`: data import
-- `purrr`: functional programming
-- `tibble`: data frames
-- `stringr`: string manipulation
-- `forcats`: categorical variables
-- `lubridate`: date and time manipulation
+- [ggplot2](https://ggplot2.tidyverse.org/): data visualisation
+- [dplyr](https://dplyr.tidyverse.org/): data manipulation
+- [tidyr](https://tidyr.tidyverse.org/): data tidying
+- [readr](https://readr.tidyverse.org/): data import
+- [purrr](https://purrr.tidyverse.org/): functional programming
+- [tibble](https://tibble.tidyverse.org/): data frames
+- [stringr](https://stringr.tidyverse.org/): string manipulation
+- [forcats](https://forcats.tidyverse.org/): categorical variables
+- [lubridate](https://lubridate.tidyverse.org/): date and time manipulation
 
 ![](www/eco.png){.absolute top="130" left="650" width="380" height="520"}
 
@@ -1278,11 +1289,16 @@ Notice anything wrong?
 
 ![](www/wedidit.gif){.absolute top="100" left="110" width="800" height="400"}
 
+## Let's Recap
+
+
 ## Continue Learning and Practicing!
 
+-   [R Programming for Data Science](https://bookdown.org/rdpeng/rprogdatascience/) by Roger D. Peng
 -   [R for Data Science](https://r4ds.had.co.nz/) by Hadley Wickham and Garrett
     Grolemund
 -   [Big Book of R](https://www.bigbookofr.com/) by Oscar Baruffa
+-   [R Weekly Blog/Podcast](https://rweekly.org/)
 -   [RStudio Cheatsheet](https://rstudio.github.io/cheatsheets/html/rstudio-ide.html?_gl=1*qpfst1*_ga*NzM5Njk3Njk4LjE2OTI2MzYxODk.*_ga_2C0WZ1JHG0*MTc0NjE5ODU0My4xNjQuMC4xNzQ2MTk4NTQzLjAuMC4w)
 -   YouTube videos, CodeAcademy, DataCamp
 -   Practice, practice, practice
@@ -1300,7 +1316,7 @@ to download the fontawesome extension for this to work-->
 
 {{< fa file-powerpoint >}} [rpubs.com/aman11/r_workshop](https://rpubs.com/aman11/r_workshop)
 
-{{< fa brands github >}} [PCDEM/R_Workshop](https://github.com/PCDEM/R_Workshop)
+{{< fa brands github >}} [PCDEM/R_intro_workshop](https://github.com/PCDEM/R_intro_workshop)
 
 {{< fa brands linkedin >}} [alex-manos](https://www.linkedin.com/in/alex-manos-228115113/)
 
