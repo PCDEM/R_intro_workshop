@@ -20,9 +20,9 @@ cntdn <- function(){
     minutes = 10,
     seconds = 0,
     play_sound = TRUE,
-    bottom = "0px",
-    right = "0px",
-    font_size = "20px",
+    top = "80%",
+    right = "50%",
+    font_size = "60px",
     color_background = '#F04124',
     color_border = '#F04124',
     color_text = 'black'
@@ -43,12 +43,15 @@ I am **not** a computer scientist, I'm just a guy that likes data
 
 ## Outline
 
+If you want to follow along with the slides (optional) `https://rpubs.com/aman11/r_workshop`
+
 -   Introductions
 -   R vs. RStudio
--   Use Cases
--   RStudio Interface
--   R basics
+-   Use cases
+-   Installing R & RStudio
+-   R coding basics
 -   Coding practice
+-   Tidy data principles
 
 
 ##  {background-color="#006791"}
