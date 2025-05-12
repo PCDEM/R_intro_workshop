@@ -13,7 +13,7 @@ computer for both Windows and MacOS devices.
 
 ## Steps to Download R and RStudio
 
-1)	Go to https://posit.co/download/rstudio-desktop/ and scroll down to view the 
+1)	Go to [https://posit.co/download/rstudio-desktop/](https://posit.co/download/rstudio-desktop/) and scroll down to view the 
 links to download R and RStudio (these are downloaded separately) (fig. 1).
 
 ![Options to download R and RStudio on the Posit webpage.](www/posit.png){width=100%}

@@ -226,13 +226,15 @@ Alex Manos, M.S.
 </section>
 <section id="outline" class="slide level2">
 <h2>Outline</h2>
+<p>If you want to follow along with the slides (optional) <code>https://rpubs.com/aman11/r_workshop</code></p>
 <ul>
 <li>Introductions</li>
 <li>R vs.&nbsp;RStudio</li>
-<li>Use Cases</li>
-<li>RStudio Interface</li>
-<li>R basics</li>
+<li>Use cases</li>
+<li>Installing R &amp; RStudio</li>
+<li>R coding basics</li>
 <li>Coding practice</li>
+<li>Tidy data principles</li>
 </ul>
 </section>
 <section id="section-1" class="slide level2" data-background-color="#006791">
@@ -1155,38 +1157,38 @@ Alex Manos, M.S.
 <div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href=""></a>vec <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">mean =</span> <span class="dv">30</span>, <span class="at">sd =</span> <span class="dv">10</span>) <span class="co"># vector of random values</span></span>
 <span id="cb78-2"><a href=""></a>vec</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 41.10167 36.34400 46.75605 19.25142 37.92034 17.27293 22.01764 36.71569
- [9] 36.20581 20.58220</code></pre>
+<pre><code> [1]  7.736437 33.144184 16.097234 39.327936 35.531335 33.989504 43.915379
+ [8] 25.327491 41.148609 33.051589</code></pre>
 </div>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href=""></a>vec[<span class="dv">1</span>] <span class="co"># first element</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 41.10167</code></pre>
+<pre><code>[1] 7.736437</code></pre>
 </div>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href=""></a>vec[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>] <span class="co"># first 5 elements</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 41.10167 36.34400 46.75605 19.25142 37.92034</code></pre>
+<pre><code>[1]  7.736437 33.144184 16.097234 39.327936 35.531335</code></pre>
 </div>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href=""></a>vec[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>)] <span class="co"># first, third, and fifth elements</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 41.10167 46.75605 37.92034</code></pre>
+<pre><code>[1]  7.736437 16.097234 35.531335</code></pre>
 </div>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href=""></a>vec[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>)] <span class="co"># all but the first, third, and fifth elements</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 36.34400 19.25142 17.27293 22.01764 36.71569 36.20581 20.58220</code></pre>
+<pre><code>[1] 33.14418 39.32794 33.98950 43.91538 25.32749 41.14861 33.05159</code></pre>
 </div>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href=""></a>vec[vec <span class="sc">&gt;</span> <span class="dv">30</span>] <span class="co"># all elements greater than 30</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 41.10167 36.34400 46.75605 37.92034 36.71569 36.20581</code></pre>
+<pre><code>[1] 33.14418 39.32794 35.53133 33.98950 43.91538 41.14861 33.05159</code></pre>
 </div>
 </div>
 </section>
@@ -1240,7 +1242,7 @@ $name
 </ol>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_a1f88032" data-update-every="1" data-play-sound="true" tabindex="0" style="right:0px;bottom:0px;font-size:20px;">
+<div class="countdown" id="timer_ac6c49f4" data-update-every="1" data-play-sound="true" tabindex="0" style="top:80%;right:50%;font-size:60px;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1714,7 +1716,7 @@ Levels: Adelie Chinstrap Gentoo</code></pre>
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_66b08aa5" data-update-every="1" data-play-sound="true" tabindex="0" style="right:0px;bottom:0px;font-size:20px;">
+<div class="countdown" id="timer_d7e84c17" data-update-every="1" data-play-sound="true" tabindex="0" style="top:80%;right:50%;font-size:60px;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
