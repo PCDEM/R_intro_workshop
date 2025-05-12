@@ -294,6 +294,56 @@ myList$name[1]
 
 
 
+# Penguins Data-----------------------------------------------------------------
+
+# The Palmer Penguins dataset is a dataset that contains information about penguins
+# in the Palmer Archipelago.
+
+# Load the penguins dataset from the palmerpenguins package if you haven't already
+library(palmerpenguins)
+
+# View the first few rows of the dataset
+head(penguins)
+
+# Get the structure of the dataset
+str(penguins)
+
+# Get the data at the first row and first column position
+penguins[1, 1]
+
+# Get the data in the first row and columns 1 and 2
+penguins[1, 1:2]
+
+# Get the data in the first rows and columns 1 and 4
+penguins[1, c(1, 4)]
+
+# Return the data except for the first column
+penguins[, -1]
+
+# Look at the column names of the dataset, compare it to the negative indexing
+# to see that the first column (species) is not included
+names(penguins)
+
+# You can also use the '$' operator to access columns in a dataframe based on the
+# name of that columns.
+
+# Return the species column
+penguins$species
+
+# You can also combine the '$' operator with the '[]' operator to access specific 
+# rows.
+
+# Return the first 10 rows of the species column
+penguins$species[1:10]
+
+# Indexing based on tests is a way that you can filter the data to meet certain
+# criteria that you can specify.
+
+# Return the species and island columns for the penguins data but only for female
+# penguins
+penguins[penguins["sex"] == 'female', c("species", "island")]
+
+
 # Tidyverse---------------------------------------------------------------------
 
 # The Tidyverse is a collection of R packages that share a common philosophy and
@@ -315,50 +365,59 @@ library(tidyverse)
 # the package name before the function name using '::' (e.g. stats::filter()).
 
 
-# Now that you have loaded the Tidyverse, you can use the piping operator ('%>%') 
-# to chain functions together instead of nesting them.
+# Now that you have loaded the Tidyverse, you can use the piping operator (%>%
+# or |>) to chain functions together instead of nesting them.
+
+# Instead of this nested function call:
+round(log(mean(penguins$body_mass_g[penguins$species == 'Adelie' & penguins$island == 'Torgersen'], 
+               na.rm = TRUE)), 0)
+
+# You can do this:
+penguins |> # start with the dataset
+  filter(species == 'Adelie', island == 'Torgersen') |> # filter the data 
+  summarise(mean_mass = mean(body_mass_g, na.rm = TRUE)) |> # calculate the mean
+  pull(mean_mass) |> # pull out the mean mass
+  log() |> # notice no arguments inside parentheses
+  round(0) # round the result
+
+#------------------
+# EXAMPLE
+
+# Calculate the average bill length
+mean(penguins$bill_length_mm)
+
+# Notice the above line returns NA because there are missing values in the dataset
+# and R doesn't know how to handle them. You can use the na.rm argument to remove
+# the missing values from the calculation.
+mean(penguins$bill_length_mm, na.rm = TRUE)
+
+# The tidyverse version would be:
+penguins |>
+  summarise(mean_bill_length = mean(bill_length_mm, na.rm = TRUE)) 
+
+#-------------------
+# EXAMPLE
+
+# Calculate the average body mass of male chinstrap penguins after 2007.
+penguins |>
+  filter(sex == 'male', species == 'Chinstrap', year > 2007) |>
+  summarise(mean_mass= mean(body_mass_g, na.rm = TRUE))
 
 
-# If you wanted to get the average pH for each site when the pH is greater than 6.
-summarise(group_by(filter(dat, pH > 6), Site), mean(pH, na.rm = TRUE))
+# Your Turn---------------------------------------------------------------------
+
+# 1) Find the minimum value of flipper_length_mm
+
+# 2) Find the maximum value of body_mass_g
+
+# 3) Filter the data any way you want using the column position of $ operator
+
+# 4) Assign steps 1-3 to individual variables
 
 
-# Getting the same data using the piping operator makes the code much easier to read.
-dat %>%
-  filter(pH > 6) %>% 
-  group_by(Site) %>%
-  summarise(mean(pH, na.rm = TRUE))
-
-
-# Data Wrangling---------------------------------------------------------------
-
-# Data wrangling is the process of cleaning and transforming data to make it more
-# suitable for analysis. The ecosystem of Tidyverse packages makes data wrangling
-# in R much easier.
-
-# Start by inspecting the data to see what needs to be cleaned.
-View(dat)
-
-# Use tidyverse syntax to clean the data into these specifications:
-# 1) Make a column for total nitrogen (TN) by combing and then removing the TKN 
-#    and NOX columns, 
-# 2) Remove ANY row that has a column with missing data
-# 3) Make sure each site has only one observation per date
-# 4) Site names are in 'XX-XX' format, get the median value based on the identifier 
-#    to the left of the '-'.
-# 5) Convert date to 'mm/dd/yyyy' format
-
-dat %>%
-  mutate(TN = TKN + NOX,
-         Site = substr(Site,1,2)) %>%
-  select(-c(TKN, NOX)) %>%
-  drop_na() %>%
-  group_by(Site, Date) %>%
-  summarise(across(where(is.numeric), \(x) median(x))) %>%
-  mutate(Date = format(Date, '%m/%d/%Y'))
-
-
-
+# BONUS) Create a new data object of with 2 columns: body mass and flipper length 
+# for all penguins, then plot them against each other using the plot() function. 
+# (hint: for tidyverse, check the documentation for select())
 
 
 
@@ -368,8 +427,8 @@ dat %>%
 
 # 2) Put all library() calls at the beginning of each section
 
-# 3) Use comments to explain WHY the code is doing what it is doing rather than
-#    WHAT the code is doing (unless it is a complex chunk of code)
+# 3) Use comments to explain WHY the code is doing something rather than
+#    WHAT it's doing (unless it is a complex chunk of code)
 
 # 4) Keep naming conventions consistent throughout the script. The best naming
 #    conventions are:
@@ -388,7 +447,3 @@ dat %>%
 # are guidelines that are optional to implement but will help to keep your code
 # organized, clean-looking, and readable which will help you in the long run if
 # you return to the code at a later date.
-
-
-
-

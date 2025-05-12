@@ -151,7 +151,7 @@ options(repos = c(CRAN = "https://cran.rstudio.com/"))
 and R packages
 -   CRAN is a network of servers that store R packages and documentation
 -   Maintained by POSIT
--   When you install a package, it is downloaded from CRAN
+-   When you install a package, it is (usually) downloaded from CRAN
 - As of `r format(Sys.Date(), '%m/%d/%Y')`, there are `r format(nrow(available.packages()), big.mark = ",")` packages on CRAN!
 
 ![](www/cran.png){.absolute top="320" left="800" width="250" height="250"}
@@ -341,7 +341,7 @@ format:
   + You need to understand the code and know how to problem-solve
 
 ![](www/vibe2.png){.absolute top="350" left="715" width="300" height="300"}
-![](www/stop.png){.absolute top="350" left="715" width="300" height="300"}
+![](www/stop.png){.absolute top="360" left="735" width="270" height="270"}
 :::
 
 ![](www/gpt.png){.absolute top="400" left="0" width="400" height="110"}
@@ -1056,7 +1056,7 @@ penguins$species[1:10]
 ## Indexing by Tests
 
 ```{r, echo=TRUE}
-penguins[penguins["sex"] == 'female', c('species', 'sex')]
+penguins[penguins["sex"] == 'female', c('species', 'island')]
 ```
 
 :::{.fragment .fade-in}
@@ -1124,11 +1124,11 @@ Although the piping adds lines, it makes the code much more readable
 
 ## Example {auto-animate="true"}
 
-What is the average bill length?
+Calculate the average bill length?
 
 ## Example {auto-animate="true"}
 
-What is the average bill length?
+Calculate the average bill length?
 
 ```{r, echo=TRUE}
 penguins$bill_length_mm
@@ -1136,7 +1136,7 @@ penguins$bill_length_mm
 
 ## Example {auto-animate="true"}
 
-What is the average bill length?
+Calculate the average bill length?
 
 
 ```{r, echo=TRUE}
@@ -1145,14 +1145,14 @@ mean(penguins$bill_length_mm)
 
 ## Example {auto-animate="true"}
 
-What is the average bill length?
+Calculate the average bill length?
 
 ```{r, echo=TRUE}
 mean(penguins$bill_length_mm, na.rm = TRUE)
 ```
 
 ## Example {auto-animate="true"}
-What is the average bill length?
+Calculate the average bill length?
 
 ```{r, echo=TRUE}
 mean(penguins$bill_length_mm, na.rm = TRUE)
@@ -1167,11 +1167,11 @@ penguins |>
 
 ## Example {auto-animate="true"}
 
-Get the average body mass of male chinstrap penguins after 2007.
+Calculate the average body mass of male chinstrap penguins after 2007.
 
 ## Example {auto-animate="true"}
 
-Get the average body mass of male chinstrap penguins after 2007.
+Calculate the average body mass of male chinstrap penguins after 2007.
 
 ```{r, echo=TRUE}
 penguins 
@@ -1179,7 +1179,7 @@ penguins
 
 ## Example {auto-animate=true}
 
-Get the average body mass of male chinstrap penguins after 2007.
+Calculate the average body mass of male chinstrap penguins after 2007.
 
 ```{r, echo=TRUE}
 penguins |>
@@ -1188,7 +1188,7 @@ penguins |>
 
 ## Example {auto-animate=true}
 
-Get the average body mass of male chinstrap penguins after 2007.
+Calculate the average body mass of male chinstrap penguins after 2007.
 
 ```{r, echo=TRUE}
 penguins |>
@@ -1201,19 +1201,19 @@ penguins |>
 
 1) Find the minimum value of `flipper_length_mm`
 
-2) Find the maximum values of `body_mass_g`
+2) Find the maximum value of `body_mass_g`
 
-3) Filter the data any way you want using the column position or `$`
+3) Filter the data any way you want using the column position or `$` operator
 
-4) Assign steps 1-3 to individual objects
+4) Assign steps 1-3 to individual variables
 
-<br> 
 
 :::{.fragment .fade-in}
 **BONUS**
 
-Create a new data object of body mass and flipper length for all penguins, then plot
-them against each other using the `plot()` function. 
+Create a new data object of with 2 columns: body mass and flipper length 
+for all penguins, then plot them against each other using the `plot()` function. 
+(hint: for tidyverse, check the documentation for `select()`)
 :::
 
 
@@ -1293,6 +1293,28 @@ Notice anything wrong?
 ![](www/wedidit.gif){.absolute top="100" left="110" width="800" height="400"}
 
 ## Let's Recap
+
+- R is a powerful (and free) tool for data analysis, visualization, and automation
+- RStudio is an IDE for R that makes it easier to work with
+- R offers many different functions and packages for data analysis
+- Keep your code neat and organized with naming variables and adding comments
+- There are different data types and structures in R
+- Use the `tidyverse` to make data analysis easier and more efficient
+- Keeping your data in a tidy format will save you from headaches later
+
+
+## Keep in Mind Best Practices
+
+Most of these are necessary but will help you in the long run
+
+- Break code into sections
+- Put `library()` calls at beginning of script
+- Use comments to explain WHY the code is doing something rather than WHAT it's
+  doing (unless it's a complex chunk of code)
+- Keep naming conventions consistent
+- Use the `<-` operator for assignment rather than `=`
+- Keep lines of code to around 80 characters maximum (use the RStudio line as a
+  guide)
 
 
 ## Continue Learning and Practicing!

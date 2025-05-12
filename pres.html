@@ -301,8 +301,8 @@ Alex Manos, M.S.
 <li>CRAN (Comprehensive R Archive Network) is the official repository for the R language and R packages</li>
 <li>CRAN is a network of servers that store R packages and documentation</li>
 <li>Maintained by POSIT</li>
-<li>When you install a package, it is downloaded from CRAN</li>
-<li>As of 05/12/2025, there are 22,384 packages on CRAN!</li>
+<li>When you install a package, it is (usually) downloaded from CRAN</li>
+<li>As of 05/12/2025, there are 22,382 packages on CRAN!</li>
 </ul>
 <p><img data-src="www/cran.png" class="absolute" style="top: 320px; left: 800px; width: 250px; height: 250px; "></p>
 </section>
@@ -466,7 +466,7 @@ Alex Manos, M.S.
 <li>You need to understand the code and know how to problem-solve</li>
 </ul></li>
 </ul>
-<p><img data-src="www/vibe2.png" class="absolute" style="top: 350px; left: 715px; width: 300px; height: 300px; "> <img data-src="www/stop.png" class="absolute" style="top: 350px; left: 715px; width: 300px; height: 300px; "></p>
+<p><img data-src="www/vibe2.png" class="absolute" style="top: 350px; left: 715px; width: 300px; height: 300px; "> <img data-src="www/stop.png" class="absolute" style="top: 360px; left: 735px; width: 270px; height: 270px; "></p>
 </div>
 <p><img data-src="www/gpt.png" class="absolute" style="top: 400px; left: 0px; width: 400px; height: 110px; "> <img data-src="www/copilot.png" class="absolute" style="top: 400px; left: 350px; width: 300px; height: 200px; "></p>
 </section>
@@ -1157,38 +1157,38 @@ Alex Manos, M.S.
 <div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href=""></a>vec <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">mean =</span> <span class="dv">30</span>, <span class="at">sd =</span> <span class="dv">10</span>) <span class="co"># vector of random values</span></span>
 <span id="cb78-2"><a href=""></a>vec</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1]  7.736437 33.144184 16.097234 39.327936 35.531335 33.989504 43.915379
- [8] 25.327491 41.148609 33.051589</code></pre>
+<pre><code> [1] 53.44233 20.75248 24.00596 25.46391 27.96979 45.08921 36.44920 30.67994
+ [9] 38.49105 23.95037</code></pre>
 </div>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href=""></a>vec[<span class="dv">1</span>] <span class="co"># first element</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 7.736437</code></pre>
+<pre><code>[1] 53.44233</code></pre>
 </div>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href=""></a>vec[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>] <span class="co"># first 5 elements</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1]  7.736437 33.144184 16.097234 39.327936 35.531335</code></pre>
+<pre><code>[1] 53.44233 20.75248 24.00596 25.46391 27.96979</code></pre>
 </div>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href=""></a>vec[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>)] <span class="co"># first, third, and fifth elements</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1]  7.736437 16.097234 35.531335</code></pre>
+<pre><code>[1] 53.44233 24.00596 27.96979</code></pre>
 </div>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href=""></a>vec[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>)] <span class="co"># all but the first, third, and fifth elements</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 33.14418 39.32794 33.98950 43.91538 25.32749 41.14861 33.05159</code></pre>
+<pre><code>[1] 20.75248 25.46391 45.08921 36.44920 30.67994 38.49105 23.95037</code></pre>
 </div>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href=""></a>vec[vec <span class="sc">&gt;</span> <span class="dv">30</span>] <span class="co"># all elements greater than 30</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 33.14418 39.32794 35.53133 33.98950 43.91538 41.14861 33.05159</code></pre>
+<pre><code>[1] 53.44233 45.08921 36.44920 30.67994 38.49105</code></pre>
 </div>
 </div>
 </section>
@@ -1242,7 +1242,7 @@ $name
 </ol>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_ac6c49f4" data-update-every="1" data-play-sound="true" tabindex="0" style="top:80%;right:50%;font-size:60px;">
+<div class="countdown" id="timer_6783ff87" data-update-every="1" data-play-sound="true" tabindex="0" style="top:80%;right:50%;font-size:60px;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1479,21 +1479,21 @@ Levels: Adelie Chinstrap Gentoo</code></pre>
 <section id="indexing-by-tests" class="slide level2">
 <h2>Indexing by Tests</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb119"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb119-1"><a href=""></a>penguins[penguins[<span class="st">"sex"</span>] <span class="sc">==</span> <span class="st">'female'</span>, <span class="fu">c</span>(<span class="st">'species'</span>, <span class="st">'sex'</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb119"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb119-1"><a href=""></a>penguins[penguins[<span class="st">"sex"</span>] <span class="sc">==</span> <span class="st">'female'</span>, <span class="fu">c</span>(<span class="st">'species'</span>, <span class="st">'island'</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 176 × 2
-   species sex   
-   &lt;fct&gt;   &lt;fct&gt; 
- 1 Adelie  female
- 2 Adelie  female
- 3 &lt;NA&gt;    &lt;NA&gt;  
- 4 Adelie  female
- 5 Adelie  female
- 6 &lt;NA&gt;    &lt;NA&gt;  
- 7 &lt;NA&gt;    &lt;NA&gt;  
- 8 &lt;NA&gt;    &lt;NA&gt;  
- 9 &lt;NA&gt;    &lt;NA&gt;  
-10 Adelie  female
+   species island   
+   &lt;fct&gt;   &lt;fct&gt;    
+ 1 Adelie  Torgersen
+ 2 Adelie  Torgersen
+ 3 &lt;NA&gt;    &lt;NA&gt;     
+ 4 Adelie  Torgersen
+ 5 Adelie  Torgersen
+ 6 &lt;NA&gt;    &lt;NA&gt;     
+ 7 &lt;NA&gt;    &lt;NA&gt;     
+ 8 &lt;NA&gt;    &lt;NA&gt;     
+ 9 &lt;NA&gt;    &lt;NA&gt;     
+10 Adelie  Torgersen
 # ℹ 166 more rows</code></pre>
 </div>
 </div>
@@ -1558,11 +1558,11 @@ Levels: Adelie Chinstrap Gentoo</code></pre>
 </section>
 <section id="example" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Example</h2>
-<p>What is the average bill length?</p>
+<p>Calculate the average bill length?</p>
 </section>
 <section id="example-1" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Example</h2>
-<p>What is the average bill length?</p>
+<p>Calculate the average bill length?</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb125"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb125-1" class="hljs-ln-code"><a href=""></a>penguins<span class="sc">$</span>bill_length_mm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1594,7 +1594,7 @@ Levels: Adelie Chinstrap Gentoo</code></pre>
 </section>
 <section id="example-2" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Example</h2>
-<p>What is the average bill length?</p>
+<p>Calculate the average bill length?</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb127"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb127-1" class="hljs-ln-code"><a href=""></a><span class="fu">mean</span>(penguins<span class="sc">$</span>bill_length_mm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1604,7 +1604,7 @@ Levels: Adelie Chinstrap Gentoo</code></pre>
 </section>
 <section id="example-3" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Example</h2>
-<p>What is the average bill length?</p>
+<p>Calculate the average bill length?</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb129"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb129-1" class="hljs-ln-code"><a href=""></a><span class="fu">mean</span>(penguins<span class="sc">$</span>bill_length_mm, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1614,7 +1614,7 @@ Levels: Adelie Chinstrap Gentoo</code></pre>
 </section>
 <section id="example-4" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Example</h2>
-<p>What is the average bill length?</p>
+<p>Calculate the average bill length?</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb131"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb131-1"><a href=""></a><span class="fu">mean</span>(penguins<span class="sc">$</span>bill_length_mm, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1635,11 +1635,11 @@ Levels: Adelie Chinstrap Gentoo</code></pre>
 </section>
 <section id="example-5" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Example</h2>
-<p>Get the average body mass of male chinstrap penguins after 2007.</p>
+<p>Calculate the average body mass of male chinstrap penguins after 2007.</p>
 </section>
 <section id="example-6" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Example</h2>
-<p>Get the average body mass of male chinstrap penguins after 2007.</p>
+<p>Calculate the average body mass of male chinstrap penguins after 2007.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb135"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb135-1" class="hljs-ln-code"><a href=""></a>penguins </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1663,7 +1663,7 @@ Levels: Adelie Chinstrap Gentoo</code></pre>
 </section>
 <section id="example-7" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Example</h2>
-<p>Get the average body mass of male chinstrap penguins after 2007.</p>
+<p>Calculate the average body mass of male chinstrap penguins after 2007.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb137"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb137-1" class="hljs-ln-code"><a href=""></a>penguins <span class="sc">|&gt;</span></span>
 <span id="cb137-2" class="hljs-ln-code"><a href=""></a>  <span class="fu">filter</span>(sex <span class="sc">==</span> <span class="st">'male'</span>, species <span class="sc">==</span> <span class="st">'Chinstrap'</span>, year <span class="sc">&gt;</span> <span class="dv">2007</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1688,7 +1688,7 @@ Levels: Adelie Chinstrap Gentoo</code></pre>
 </section>
 <section id="example-8" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Example</h2>
-<p>Get the average body mass of male chinstrap penguins after 2007.</p>
+<p>Calculate the average body mass of male chinstrap penguins after 2007.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb139"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb139-1" class="hljs-ln-code"><a href=""></a>penguins <span class="sc">|&gt;</span></span>
 <span id="cb139-2" class="hljs-ln-code"><a href=""></a>  <span class="fu">filter</span>(sex <span class="sc">==</span> <span class="st">'male'</span>, species <span class="sc">==</span> <span class="st">'Chinstrap'</span>, year <span class="sc">&gt;</span> <span class="dv">2007</span>) <span class="sc">|&gt;</span></span>
@@ -1705,18 +1705,17 @@ Levels: Adelie Chinstrap Gentoo</code></pre>
 <h2>Your Turn</h2>
 <ol type="1">
 <li><p>Find the minimum value of <code>flipper_length_mm</code></p></li>
-<li><p>Find the maximum values of <code>body_mass_g</code></p></li>
-<li><p>Filter the data any way you want using the column position or <code>$</code></p></li>
-<li><p>Assign steps 1-3 to individual objects</p></li>
+<li><p>Find the maximum value of <code>body_mass_g</code></p></li>
+<li><p>Filter the data any way you want using the column position or <code>$</code> operator</p></li>
+<li><p>Assign steps 1-3 to individual variables</p></li>
 </ol>
-<p><br></p>
 <div class="fragment fade-in">
 <p><strong>BONUS</strong></p>
-<p>Create a new data object of body mass and flipper length for all penguins, then plot them against each other using the <code>plot()</code> function.</p>
+<p>Create a new data object of with 2 columns: body mass and flipper length for all penguins, then plot them against each other using the <code>plot()</code> function. (hint: for tidyverse, check the documentation for <code>select()</code>)</p>
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_d7e84c17" data-update-every="1" data-play-sound="true" tabindex="0" style="top:80%;right:50%;font-size:60px;">
+<div class="countdown" id="timer_7130e669" data-update-every="1" data-play-sound="true" tabindex="0" style="top:80%;right:50%;font-size:60px;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1811,6 +1810,27 @@ Levels: Adelie Chinstrap Gentoo</code></pre>
 </section>
 <section id="lets-recap" class="slide level2">
 <h2>Let’s Recap</h2>
+<ul>
+<li>R is a powerful (and free) tool for data analysis, visualization, and automation</li>
+<li>RStudio is an IDE for R that makes it easier to work with</li>
+<li>R offers many different functions and packages for data analysis</li>
+<li>Keep your code neat and organized with naming variables and adding comments</li>
+<li>There are different data types and structures in R</li>
+<li>Use the <code>tidyverse</code> to make data analysis easier and more efficient</li>
+<li>Keeping your data in a tidy format will save you from headaches later</li>
+</ul>
+</section>
+<section id="keep-in-mind-best-practices" class="slide level2">
+<h2>Keep in Mind Best Practices</h2>
+<p>Most of these are necessary but will help you in the long run</p>
+<ul>
+<li>Break code into sections</li>
+<li>Put <code>library()</code> calls at beginning of script</li>
+<li>Use comments to explain WHY the code is doing something rather than WHAT it’s doing (unless it’s a complex chunk of code)</li>
+<li>Keep naming conventions consistent</li>
+<li>Use the <code>&lt;-</code> operator for assignment rather than <code>=</code></li>
+<li>Keep lines of code to around 80 characters maximum (use the RStudio line as a guide)</li>
+</ul>
 </section>
 <section id="continue-learning-and-practicing" class="slide level2">
 <h2>Continue Learning and Practicing!</h2>
