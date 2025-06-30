@@ -38,8 +38,11 @@ DISCLAIMER
 :::
 
 ::: {style="font-size: 1.2em; text-align: center; margin-top: 5vh;"}
-I am **not** a computer scientist, I'm just a guy that likes data
+I am **not** a computer scientist
 :::
+
+
+
 
 ## Outline
 
@@ -52,6 +55,13 @@ If you want to follow along with the slides (optional) `https://rpubs.com/aman11
 -   R coding basics
 -   Coding practice
 -   Tidy data principles
+
+
+## Goals for This Workshop
+
+- Basic understanding of R and RStudio
+- Become comfortable with the RStudio interface and running code
+- Develop a VERY basic understanding of R coding principles
 
 
 ##  {background-color="#006791"}
@@ -479,38 +489,6 @@ setwd("C:/Users/YourName/Documents/YourProject")
 ```
 :::
 
-## Installing Packages
-
-- Packages can be installed through 2 methods: console/script or RStudio interface
-
-- *Console/Script*: `install.packages("package_name")` 
-  + If you want to install multiple packages at once you can do
-  `install.packages(c("package1", "package2"))`
-
-- *RStudio*: Click the "Packages" tab in the bottom-right window pane.Then click
-"Install" and search for the package you want to install. 
-
-![](www/packages.png){.absolute top="410" left="0" width="500" height="300"}
-
-## Loading Packages
-
-Once the packages are installed we need to load them into our `R` session with 
-the `library()` function
-
-```{r, echo=TRUE, eval=FALSE}
-# Use the '#' symbol to talk to ourselves by 'commenting out' lines.
-# R will not run any line with a '#' in front of it.
-library(package1)
-library(package2)
-```
-
-<br> 
-
-:::{.fragment .fade-in}
-- Notice too that you don't need quotes around the package names anymore.
-- `R` now recognizes these packages as defined objects with given names
-:::
-
 
 ## Basic Math
 
@@ -829,6 +807,8 @@ apropos("^is")
 
 ## Vectors
 
+- Vectors are the most basic data structure in R and just are a sequence of values
+
 - Come in two types:
   + **Atomic**: Must be the same type
   + **Lists**: can be different types
@@ -844,7 +824,7 @@ is.vector(myList) # Check if my_list is a vector
 ```
 
 :::{.fragment .fade-in}
-![](www/veclist.png){.absolute top="420" left="215" width="530" height="260"}
+![](www/veclist.png){.absolute top="470" left="215" width="460" height="220"}
 :::
 
 ## Atomic Vectors
@@ -921,6 +901,37 @@ myList$num # first vector in the list
 myList$name[1] # first element of the second vector in the list
 ```
 
+## Installing Packages
+
+- Packages can be installed through 2 methods: console/script or RStudio interface
+
+- *Console/Script*: `install.packages("package_name")` 
+  + If you want to install multiple packages at once you can do
+  `install.packages(c("package1", "package2"))`
+
+- *RStudio*: Click the "Packages" tab in the bottom-right window pane.Then click
+"Install" and search for the package you want to install. 
+
+![](www/packages.png){.absolute top="410" left="0" width="500" height="300"}
+
+## Loading Packages
+
+Once the packages are installed we need to load them into our `R` session with 
+the `library()` function
+
+```{r, echo=TRUE, eval=FALSE}
+# Use the '#' symbol to talk to ourselves by 'commenting out' lines.
+# R will not run any line with a '#' in front of it.
+library(package1)
+library(package2)
+```
+
+<br> 
+
+:::{.fragment .fade-in}
+- Notice too that you don't need quotes around the package names anymore.
+- `R` now recognizes these packages as defined objects with given names
+:::
 
 
 ## Your Turn {background-color="#ffeeee"}
@@ -1234,7 +1245,7 @@ Tidy Data
 - It's better to make a dataset tidy from the start rather than trying to fix it later.
 - The `tidyverse` is built around the idea of tidy data.
 
-## Rules for Tidy Data
+## Rules of Tidy Data
 
 Tabular data should be rectangular and flat
 
