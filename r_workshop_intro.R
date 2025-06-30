@@ -25,20 +25,6 @@ getwd()
 setwd("C:/path/to/your/folder")
 
 
-# Installing and Loading Packages-----------------------------------------------
-
-# R has a large number of packages that can be used to extend its functionality.
-# You can install packages from CRAN (Comprehensive R Archive Network) using the
-# 'install.packages()' function. You only need to install a package once, but you
-# need to load it every time you start a new R session using the 'library()' function.
-
-# Install a package
-install.packages('ggplot2')
-
-# Load a package
-library(ggplot2)
-
-
 # Basic math--------------------------------------------------------------------
 
 5 + 5  # Addition
@@ -276,6 +262,20 @@ myList$num
 
 # Return the first element of the second vector in the list using the '$' operator
 myList$name[1]
+
+
+# Installing and Loading Packages-----------------------------------------------
+
+# R has a large number of packages that can be used to extend its functionality.
+# You can install packages from CRAN (Comprehensive R Archive Network) using the
+# 'install.packages()' function. You only need to install a package once, but you
+# need to load it every time you start a new R session using the 'library()' function.
+
+# Install a package
+install.packages('ggplot2')
+
+# Load a package
+library(ggplot2)
 
 
 # Your Turn---------------------------------------------------------------------
