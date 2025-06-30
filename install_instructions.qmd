@@ -36,6 +36,8 @@ website.
 
 ![CRAN page showing options to download R. The R version for Windows is the third option down.](www/Rdownload.png){width=100%}
 
+
+
 ### Installing R on MacOS
 
 1) Click “Download R for macOS” (fig. 3).
@@ -54,3 +56,11 @@ by clicking the apple icon in the top left corner of your screen and selecting
 ![R versions available for Mac computers based on chip type.](www/Rmac.png){width=100%}
 
 
+### Installing RStudio on Windows and MacOS
+
+1) Click the "DOWNLOAD RSTUDIO DESKTOP FOR WINDOWS/MAC" button below “2: Install 
+RStudio” on the posit website (fig. 1).
+
+2) Once the program finishes downloading, open the “RStudio.exe” file.
+
+3) Follow the install instructions and allow all recommended settings.
