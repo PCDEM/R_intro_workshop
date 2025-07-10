@@ -33,7 +33,7 @@ setwd("C:/path/to/your/folder")
 5 / 5  # Division
 5 ^ 5  # Exponentiation (or **)
 log(100) # Natural log
-10*10/(3^4*2)-2 # PEMDAS
+6*4/(2^2*3)-2 # PEMDAS
 
 # R follows the basic order of operations (PEMDAS), so be sure to use parentheses
 # where necessary.
@@ -283,12 +283,13 @@ library(ggplot2)
 # 1) Install and load the packages tidyverse, psych, and palmerpenguins using the 
 #    install.packages() and library() functions.
 
-# 2) Make a vector of 100 random values using the rnorm() function and name it vec
-#    (hint: use ?rnorm to read the argument descriptions).
+# 2) Make a vector of 50 random values with a mean and standard deviation of your 
+#    choice using the `rnorm()` function and assign it to a variable named `vec` 
+#    (hint: use `?rnorm` to read the argument descriptions).
 
 # 3) Get summary statistics for the vector using the describe() function.
 
-# 4) Use [] indecing to return the first 10 values of the vector.
+# 4) Use [] indexing to return the first 10 values of the vector.
 
 # 5) Plot your data using the plot() function. 
 
@@ -307,6 +308,9 @@ head(penguins)
 
 # Get the structure of the dataset
 str(penguins)
+
+# Inspect the data closer in a new tab
+View(penguins)
 
 # Get the data at the first row and first column position
 penguins[1, 1]
@@ -410,7 +414,7 @@ penguins |>
 
 # 2) Find the maximum value of body_mass_g
 
-# 3) Filter the data any way you want using the column position of $ operator
+# 3) Filter the data by selecting any two columns using the column position or $ operator
 
 # 4) Assign steps 1-3 to individual variables
 
